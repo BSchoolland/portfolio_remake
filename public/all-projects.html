@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Benjamin's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+<section class="other-projects">
+        <div class="other-projects-inner">
+
+            <h2>All Projects</h2>
+            <p>I've got a database of all my projects here, updated often. Feel free to filter by skill used or search for a specific
+                project.</p>
+            <input type="text" id="search" placeholder="Search for projects...">
+            <br />
+            <select id="order">
+                <option value="a-z">A-Z</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="largest">Largest</option>
+                <option value="smallest">Smallest</option>
+            </select>
+            <select id="filter">
+                <option value="all">All</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+                <option value="react">React</option>
+                <option value="next">Next.js</option>
+                <option value="node">Node.js</option>
+                <option value="express">Express</option>
+                <option value="python">Python</option>
+                <option value="cpp">C++</option>
+                <option value="sql">SQL</option>
+            </select>
+            <select id="for">
+                <option value="all">All</option>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+            </select>
+            <div id="returned-projects-container">
+                <!-- to be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+</body>

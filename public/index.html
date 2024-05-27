@@ -3,7 +3,7 @@
 
 <head>
     <title>Benjamin's Portfolio</title>
-    <meta viewport="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
@@ -41,7 +41,7 @@
     </section>
     </section class="projects">
     <div class="projects-inner">
-        <h2>Projects</h2>
+        <h2>My Favorate Projects</h2>
         <div class="project">
             <img src="images/project1.png" alt="Project 1">
             <h3>Project 1</h3>
@@ -62,17 +62,24 @@
         <div class="skills-inner">
             <h2>Skills</h2>
             <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>C++</li>
-                <li>SQL</li>
+                <li onclick="window.location.href='/all-projects?skill=HTML'"><a href="/all-projects?skill=HTML">HTML</a></li>
+                <li onclick="window.location.href='/all-projects?skill=CSS'"><a href="/all-projects?skill=CSS">CSS</a></li>
+                <li onclick="window.location.href='/all-projects?skill=JavaScript'"><a href="/all-projects?skill=JavaScript">JavaScript</a></li>
+                <li onclick="window.location.href='/all-projects?skill=React'"><a href="/all-projects?skill=React">React</a></li>
+                <li onclick="window.location.href='/all-projects?skill=Next.js'"><a href="/all-projects?skill=Next.js">Next.js</a></li>
+                <li onclick="window.location.href='/all-projects?skill=Node.js'"><a href="/all-projects?skill=Node.js">Node.js</a></li>
+                <li onclick="window.location.href='/all-projects?skill=Express'"><a href="/all-projects?skill=Express">Express</a></li>
+                <li onclick="window.location.href='/all-projects?skill=Python'"><a href="/all-projects?skill=Python">Python</a></li>
+                <li onclick="window.location.href='/all-projects?skill=C++'"><a href="/all-projects?skill=C++">C++</a></li>
+                <li onclick="window.location.href='/all-projects?skill=SQL'"><a href="/all-projects?skill=SQL">SQL</a></li>
             </ul>
+        </div>
+    </section>
+    <section class="other-projects">
+        <div class="other-projects-inner">
+            <h2>All Projects</h2>
+            <p>Programming isn't just a job for me, it was a hobby long before I started my career. Because of this, I'm always working on some side project I find interesting, and growing the list of things I've made. If you want to see all of my projects, click the link below.</p>
+            <a href="/all-projects">View All My Projects</a>
         </div>
     </section>
     <section class="contact">
@@ -81,6 +88,8 @@
             <p>If you're interested in working with me, feel free to reach out on LinkedIn or text (<i
                     id="show-phone">show phone number</i>).
             </p>
+        </div>
+    </section>
 </body>
 
 </html>

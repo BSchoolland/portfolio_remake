@@ -1,11 +1,11 @@
 /* styles.css */
 :root {
-    --primary-color: #333;
-    --secondary-color: #555;
-    --background-color: #f4f4f4;
-    --accent-color: #007BFF; /* Blue */
-    --text-color: #666;
-    --header-background-color: #ffffff;
+    --primary-color: #ddd; /* Light grey for text */
+    --secondary-color: #bbb; /* Medium grey for less emphasized text */
+    --background-color: #282c34; /* Dark grey background */
+    --accent-color: #4c8aff; /* Brighter blue for accents */
+    --text-color: #ccc; /* Light grey text */
+    --header-background-color: #20232a; /* Slightly darker grey for header */
 }
 
 body {
@@ -70,15 +70,41 @@ nav ul li a {
     color: var(--secondary-color);
 }
 
-.about, .projects, .skills, .contact {
+.about, .projects, .skills, .other-projects, .contact {
     padding: 20px;
     margin-top: 20px;
 }
 
-.about-inner, .projects-inner, .skills-inner, .contact-inner {
+.about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner {
     margin: auto;
     max-width: 800px;
 }
+
+.skills-inner a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.other-projects-inner input, .other-projects-inner select {
+    background-color: var(--header-background-color); /* Use the darker grey background */
+    color: var(--primary-color); /* Light grey text for visibility */
+    border: 1px solid var(--secondary-color); /* Subtle borders in a medium grey */
+    padding: 10px; /* Padding for better touch interaction and appearance */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    width: 100%; /* Full width for better control in form layouts */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    margin-bottom: 15px; /* Space below elements */
+}
+
+.other-projects-inner select {
+    width: 20%;
+}
+.other-projects-inner input:focus, .other-projects-inner select:focus {
+    border-color: var(--accent-color); /* Brighter blue border on focus for better accessibility */
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 3px rgba(76, 138, 255, 0.5); /* Soft glow effect for focus */
+}
+
 
 h2 {
     color: var(--accent-color);
@@ -98,10 +124,16 @@ h2 {
 
 .skills li {
     display: inline-block;
-    margin-right: 10px;
+    margin: 5px;
     background-color: var(--header-background-color);
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.skills li:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
 }
 
 #show-phone {
@@ -109,15 +141,22 @@ h2 {
     color: var(--accent-color);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        font-size: 18px; /* Increases the base font size for better readability */
+    }
+
     .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .contact-inner {
-        padding: 10px;
-        font-size: 16px;
+        padding: 20px; /* Increased padding for better spacing */
     }
 
     nav ul li {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 15px; /* Increased margin for better tap targets */
+    }
+
+    .skills li {
+        margin: 5px; /* Increased spacing around skills */
+        font-size: 16px; /* Larger font size for skill tags */
     }
 }
