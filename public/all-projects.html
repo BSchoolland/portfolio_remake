@@ -2,9 +2,11 @@
 <html>
 
 <head>
-    <title>Benjamin's Portfolio</title>
+    <title>All Projects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="images/favicon.ico">
+    
 </head>
 
 <body>
@@ -20,30 +22,20 @@
                 <option value="a-z">A-Z</option>
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
-                <option value="largest">Largest</option>
-                <option value="smallest">Smallest</option>
             </select>
             <select id="filter">
-                <option value="all">All</option>
-                <option value="html">HTML</option>
-                <option value="css">CSS</option>
-                <option value="javascript">JavaScript</option>
-                <option value="react">React</option>
-                <option value="next">Next.js</option>
-                <option value="node">Node.js</option>
-                <option value="express">Express</option>
-                <option value="python">Python</option>
-                <option value="cpp">C++</option>
-                <option value="sql">SQL</option>
+                <!-- to be populated by JavaScript -->
             </select>
             <select id="for">
                 <option value="all">All</option>
                 <option value="personal">Personal</option>
                 <option value="work">Work</option>
+                <option value="group">Group</option>
             </select>
             <div id="returned-projects-container">
                 <!-- to be populated by JavaScript -->
             </div>
         </div>
     </section>
+    <script src="all-projects.js"></script>
 </body>
