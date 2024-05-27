@@ -1,0 +1,123 @@
+/* styles.css */
+:root {
+    --primary-color: #333;
+    --secondary-color: #555;
+    --background-color: #f4f4f4;
+    --accent-color: #007BFF; /* Blue */
+    --text-color: #666;
+    --header-background-color: #ffffff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--header-background-color);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.header-contact a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    margin-left: 10px;
+}
+
+.hero {
+    background-color: var(--header-background-color);
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-inner {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.hero h1 {
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.about, .projects, .skills, .contact {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.about-inner, .projects-inner, .skills-inner, .contact-inner {
+    margin: auto;
+    max-width: 800px;
+}
+
+h2 {
+    color: var(--accent-color);
+}
+
+.project {
+    margin-top: 20px;
+    background-color: var(--header-background-color);
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills li {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: var(--header-background-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#show-phone {
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .contact-inner {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
