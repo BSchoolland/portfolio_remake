@@ -9,7 +9,7 @@
         "image": "images/wreckingwheels.png",
         "github": "https://github.com/BSchoolland/Vehicle-Building-Game",
         "live": "https://wreckingwheels.com/",
-        "page": "wrecking-wheels.html"
+        "page": "/pages/wrecking-wheels.html"
     },
     {
         "id": 1,
@@ -21,7 +21,7 @@
         "image": "images/legosorter.png",
         "github": "https://github.com/BSchoolland/lego-sorter",
         "live": "",
-        "page": "lego-sorter.html"
+        "page": "/pages/lego-sorter.html"
     },
     {
         "id": 2,
@@ -33,7 +33,7 @@
         "image": "images/communityali.png",
         "github": "https://github.com/Community-ALI/CommunityALI-Website",
         "live": "https://communityali.com/",
-        "page": "communityali.html"
+        "page": "/pages/communityali.html"
     },
     {
         "id": 3,
@@ -45,7 +45,7 @@
         "image": "images/translator.png",
         "github": "https://github.com/BSchoolland/translator-app",
         "live": "",
-        "page": "translator-app.html"
+        "page": "/pages/translator-app.html"
     },
     {
         "id": 4,
@@ -57,7 +57,7 @@
         "image": "images/webscraper.png",
         "github": "",
         "live": "",
-        "page": "web-scraper.html"
+        "page": "/pages/web-scraper.html"
     },
     {
         "id": 5,
@@ -69,7 +69,7 @@
         "image": "images/portfolio.png",
         "github": "https://github.com/BSchoolland/portfolio",
         "live": "",
-        "page": "portfolio-old.html"
+        "page": "/pages/portfolio-old.html"
     },
     {
         "id": 6,
@@ -81,7 +81,7 @@
         "image": "images/sudoku.png",
         "github": "https://github.com/BSchoolland/sudoku-solver",
         "live": "",
-        "page": "sudoku-solver.html"
+        "page": "/pages/sudoku-solver.html"
     },
     {
         "id": 7,
@@ -93,7 +93,7 @@
         "image": "images/connectfour.png",
         "github": "https://github.com/BSchoolland/Connect-4",
         "live": "",
-        "page": "connect-four.html"
+        "page": "/pages/connect-four.html"
     },
     {
         "id": 8,
@@ -105,7 +105,7 @@
         "image": "images/mjcapplication.png",
         "github": "https://github.com/Community-ALI/club-website",
         "live": "https://club-application-c15c28325e63.herokuapp.com/",
-        "page": "mjc-application.html"
+        "page": "/pages/mjc-application.html"
     },
     {
         "id": 9,
@@ -117,7 +117,7 @@
         "image": "images/nextjscomponents.png",
         "github": "https://github.com/BSchoolland/next-components-bvt",
         "live": "",
-        "page": "next-components.html"
+        "page": "/pages/next-components.html"
     },
     {
         "id": 10,
@@ -129,7 +129,7 @@
         "image": "images/chatapp.png",
         "github": "https://github.com/BSchoolland?tab=repositories",
         "live": "https://bschoolland.github.io/firebase-test/",
-        "page": "chat-app.html"
+        "page": "/pages/chat-app.html"
     },
     {
         "id": 11,
@@ -141,6 +141,6 @@
         "image": "images/portfolio2.png",
         "github": "FIXME: add this",
         "live": "https://bschoolland.com/",
-        "page": "portfolio.html"
+        "page": "/pages/portfolio.html"
     }
 ]

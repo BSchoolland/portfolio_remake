@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: [project name]</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <!-- for project specific content-->
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                // populate the intro section with the project's details
+                const projectUrl = window.location.href;
+                const projectPath = projectUrl.split('/').pop();
+                const project = projects.find(project => project.page.includes(projectPath));
+                const intro = document.querySelector('.intro-inner');
+                intro.innerHTML = `
+                    <h1>${project.projectName}</h1>
+                    <p>${project.summary}</p>
+                    <img src="../${project.image}" alt="${project.name}">
+                `;
+                // populate the links section with the project's links
+                const links = document.querySelector('.links-inner');
+                if (project.github) {
+                    links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                }
+                if (project.demo) {
+                    links.innerHTML += `<a href="${project.demo}" target="_blank">Demo</a>`;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if (project.github)
                     linksHtml += `<a href="${project.github}" target="_blank">GitHub</a>`;
                 if (project.page)
-                    linksHtml += `<a href="${project.page}" target="_blank">More Info</a>`;
+                    linksHtml += `<a href="${project.page}">More Info</a>`;
                 projectDiv.innerHTML = `
                         <h3>${project.projectName}</h3>
                         <p>${project.summary}</p>
-                        <div style="display: flex; justify-content: center;">
-                            <img src="${project.image}" style="max-width: 75%; max-height: 300px;" alt="${project.projectName}" />
+                        <div style="display: flex; justify-content: center; cursor: pointer;">
+                            <img src="${project.image}" style="max-width: 75%; max-height: 300px;" alt="${project.projectName}" onClick="window.location.href='${project.page}'" />
                         </div>
                         <br />
                         ${linksHtml}

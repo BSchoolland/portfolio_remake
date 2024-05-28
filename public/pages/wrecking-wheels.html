@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Wrecking Wheels</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>Project: Wrecking Wheels</h2>
+            <p>I've always wanted to make a game, and this browser game provided the perfect opportunity to live out that dream.
+
+            <p>So, what’s the game? All my favorite games include some element of building, whether it's Minecraft or Kerbal Space Program. My favorite gameplay element is usually the ability to get creative and make something new. Unsurprisingly, my browser game, "Wrecking Wheels," aims to encourage that same creativity by confronting players with a goal, a blank canvas, and blocks to build with.</p>
+    
+            <p>The process of making this game has included many challenges and learning opportunities. In my opinion, the best way to learn is by doing, and designing, building, and deploying this browser game forced me to do quite a bit. Here are some of the tasks I completed as part of this process:</p>
+            <ul>
+                <li>Writing all the game logic in JavaScript</li>
+                <li>Designing a visually appealing user interface in Figma</li>
+                <li>Stepping out of my comfort zone to compose the game music</li>
+                <li>Learning to use image editing software</li>
+                <li>Setting up and managing a database for user accounts and progress</li>
+                <li>Managing a VPS using SSH</li>
+                <li>Setting up automated deployment using GitHub Actions</li>
+            </ul>
+    
+            <h3>Key learnings:</h3>
+            <ul>
+                <li>I learned the hard way that mobile compatibility should be a top priority for web apps. I didn’t initially plan for how my game would run on mobile devices, so it took a lot of work to get it even somewhat functional on a phone, and it’s still iffy. I plan on making major changes to my code to improve mobile compatibility in the near future.</li>
+                <li>Design should always focus on ease of future modifications. I designed my block classes this way and even made a graphical tool for the level creation process, making it super easy to add and test new levels.</li>
+                <li>Using the server I set up to host the game and database really opened my eyes to how servers work. An eye-opening moment was when I finally realized that my VPS was truly just a computer, no different from the one I was using, just virtual and far away. I "knew" this before, but it took getting my hands dirty installing a new OS, setting up the system, and cloning and running the game’s repository myself to really "understand" it.</li>
+            </ul>
+    
+            <p>I’m excited to work on the next update and would love to hear your feedback on the project.</p>
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                // populate the intro section with the project's details
+                const projectUrl = window.location.href;
+                const projectPath = projectUrl.split('/').pop();
+                const project = projects.find(project => project.page.includes(projectPath));
+                const intro = document.querySelector('.intro-inner');
+                intro.innerHTML = `
+                    <h1>${project.projectName}</h1>
+                    <p>${project.summary}</p>
+                    <img src="../${project.image}" alt="${project.name}">
+                `;
+                // populate the links section with the project's links
+                const links = document.querySelector('.links-inner');
+                if (project.github) {
+                    links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                }
+                if (project.live) {
+                    links.innerHTML += `<a href="${project.live}" target="_blank">View Live Site</a>`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

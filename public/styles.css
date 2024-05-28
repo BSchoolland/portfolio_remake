@@ -56,6 +56,12 @@ nav ul li a {
     margin-left: 10px;
 }
 
+.footer {
+    background-color: var(--header-background-color);
+    padding: 10px 20px;
+    text-align: center;
+}
+
 .hero {
     background-color: var(--header-background-color);
     padding: 20px;
@@ -76,14 +82,25 @@ nav ul li a {
     color: var(--secondary-color);
 }
 
-.about, .projects, .skills, .other-projects, .contact {
+.about, .projects, .skills, .other-projects, .contact, .intro, .content .links {
     padding: 20px;
     margin-top: 20px;
 }
 
-.about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner {
+.about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
     margin: auto;
     max-width: 800px;
+}
+
+.links-inner {
+    display: flex;
+    justify-content: center;
+}
+
+.links-inner a {
+    color: var(--accent-color);
+    margin: 0 10px;
+    font-size: 20px;
 }
 
 .skills-inner a {
@@ -105,11 +122,17 @@ nav ul li a {
 .other-projects-inner select {
     width: 20%;
 }
+.other-projects-inner a {
+    color: var(--accent-color);
+    margin: 0 10px;
+}
 .other-projects-inner input:focus, .other-projects-inner select:focus {
     border-color: var(--accent-color); /* Brighter blue border on focus for better accessibility */
     outline: none; /* Removes the default focus outline */
     box-shadow: 0 0 3px rgba(76, 138, 255, 0.5); /* Soft glow effect for focus */
 }
+
+
 
 
 h2, h3 {
@@ -121,6 +144,11 @@ h2, h3 {
     background-color: var(--header-background-color);
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.project a {
+    color: var(--accent-color);
+    margin: 0 10px;
 }
 
 .skills ul {
@@ -152,7 +180,7 @@ h2, h3 {
         font-size: 18px; /* Increases the base font size for better readability */
     }
 
-    .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .contact-inner {
+    .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
         padding: 20px; /* Increased padding for better spacing */
     }
 
@@ -164,5 +192,14 @@ h2, h3 {
     .skills li {
         margin: 5px; /* Increased spacing around skills */
         font-size: 16px; /* Larger font size for skill tags */
+    }
+
+    .other-projects-inner .filter-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .other-projects-inner select {
+        width: 50%;
     }
 }
