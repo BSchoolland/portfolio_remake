@@ -18,9 +18,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         .then((projects) => {
             // Populating the filter dropdown with unique skills
             const allSkills = projects.flatMap((project) => project.skills);
-            const uniqueSkills = Array.from(new Set(allSkills)).sort();
+            const skillFrequency = allSkills.reduce((acc, skill) => {
+                acc[skill] = (acc[skill] || 0) + 1;
+                return acc;
+            }, {});
+
+            const x = 2; // minimum number of projects a skill must appear in to be considered frequent
+            const frequentSkills = Object.keys(skillFrequency).filter(skill => skillFrequency[skill] >= x);
+
+            const uniqueFrequentSkills = Array.from(new Set(frequentSkills)).sort();
             const filterSelect = document.getElementById("filter");
-            uniqueSkills.forEach((skill) => {
+            uniqueFrequentSkills.forEach((skill) => {
                 const option = document.createElement("option");
                 option.value = skill;
                 option.textContent = skill;
