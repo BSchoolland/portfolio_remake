@@ -1,17 +1,3 @@
-function setFiltersFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    const order = params.get("order");
-    const filterSkill = params.get("filter");
-    const projectType = params.get("for");
-    const searchQuery = params.get("search");
-
-    if (order) document.getElementById("order").value = order;
-    if (filterSkill) document.getElementById("filter").value = filterSkill;
-    if (projectType) document.getElementById("for").value = projectType;
-    if (searchQuery) document.getElementById("search").value = searchQuery;
-}
-
-setFiltersFromUrl();
 document.addEventListener("DOMContentLoaded", async function () {
     fetch("/projects.json")
         .then((response) => response.json())
@@ -149,9 +135,26 @@ document.addEventListener("DOMContentLoaded", async function () {
                     container.appendChild(projectDiv);
                 });
             }
+
+            function setFiltersFromUrl() {
+                const params = new URLSearchParams(window.location.search);
+                const order = params.get("order");
+                const filterSkill = params.get("filter");
+                const projectType = params.get("for");
+                const searchQuery = params.get("search");
+            
+                if (order) document.getElementById("order").value = order;
+                if (filterSkill) document.getElementById("filter").value = filterSkill;
+                if (projectType) document.getElementById("for").value = projectType;
+                if (searchQuery) document.getElementById("search").value = searchQuery;
+            }
+            // do these actions in the right order
+            setTimeout(() => {
+                setFiltersFromUrl();
+            }, 0);
             setTimeout(() => {
                 handleFilterChange();
-            }, 0);
+            }, 1);
 
             // when the user types in the search box, filter the projects
             document
