@@ -175,6 +175,19 @@ h2, h3 {
     color: var(--accent-color);
 }
 
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 @media (max-width: 768px) {
     body {
         font-size: 18px; /* Increases the base font size for better readability */

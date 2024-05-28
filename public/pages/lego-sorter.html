@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Lego Sorter</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>Project: Lego Sorter</h2>
+            <p>I've always loved legos, they come in all shapes and sizes and you can build anything you can imagine! The downside: those shapes and sizes are usually shoved into a single box, so you can't find the pieces you need, meaning you can't build anything you can imagine anymore. Because of this problem, and because I'm too lazy to sort them myself, I decided to spend way more time than it would take to sort them by hand to build a lego sorter.</p>
+
+            <h3>The plan:</h3>
+            <p>My plan was to build a machine that could sort legos by color. I would dump a bunch of legos into a hopper, and the machine would use a conveyor belt and camera to sort the legos into different bins based on their color. I started off by doing some research to deepen my understanding of CAD (Computer Aided Design) and then designing the machine in FreeCAD, an open source CAD software. It took a lot of tries to get the design right, and many rolls of fillament were harmed in the making of this project.</p>
+
+            <h3>Prooving the concept:</h3>
+            <p>Before building anything, I also wanted to make sure that the code would actually work. I wrote a program in Python that could take a picture of a lego, and determine its color. As expected, this was pretty easy.  Python's image processing libraries are very powerful, and it didn't take too long to get a program that could determine the color of a lego with a high degree of accuracy simply by counting the number of pixels of each color in the image.</p>
+
+            <h3>Building the machine:</h3>
+            <p>Once I was convinced that the project could work, I could justify obtaining the electronics, motors, and other parts I needed to build the machine. I printed as many parts and could be 3D printed, and bought the rest. Then I re-printed all the parts more times than I can count because they broke, didn't fit, or needed to do something slightly different. I'm still in the prototyping phase, but currently the conveyor belt and camera are working, and it's able to sort legos into two bins based on their color.</p>
+
+            <h3>Demo Video:</h3>
+            <p>Here's a short video of the machine in action!</p>
+            <div style="display: flex; justify-content: center;">
+            <video width="30%" controls muted>
+                <source src="../videos/lego-sorter.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+
+            <h3>Next Steps:</h3>
+            <p>There are a few things I'd like to do to improve the machine:</p>
+            <ul>
+                <li>First, I haven't yet added the hopper, meaning I have to manually place legos on the conveyor belt. This essentially defeats the purpose of an automated lego sorter, so I'll need to add that.</li>
+                <li>Second, I'd like to add more bins. Currently the machine can only sort legos into two bins, but I'd like to add more so that I can sort legos by color more effectively.</li>
+                <li>One other thing that could be very interesting is using a more advanced program, such as a neural network to classify legos.  This would allow the machine to sort legos by shape, size, or even type, not just color.</li>
+            </ul>
+
+            <h3>Key learnings:</h3>
+            <ul>
+                <li>CAD tools are very powerful, and learning to use them more effectively has opened up a lot of future project possibilities.</li>
+                <li>I gained a bit of confidence in my ability to design and build a machine from scratch. I've generally been more of a software person, so this was definitely out of my comfort zone, but a very valuable experience.</li>
+                <li>Knowing the plan is very important.  My first impulse was to just start buying parts and building the machine, but the easy-to-see cost of parts on amazon made me stop and think about what I was doing. The costs associated with purely software projects are more hidden, but the concept transfers, and I this project contributed to my understanding of the importance of planning.</li>
+            </ul>
+            <p>I'll likely come back to this project in the future, but for now I'm happy with the progress I've made.</p>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+        </div>
+    </section>
+    <div id="loading-screen">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img); // Add the image to the DOM
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.demo) {
+                            links.innerHTML += `<a href="${project.demo}" target="_blank">Demo</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+</body>
+</html>
