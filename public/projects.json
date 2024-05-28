@@ -1,18 +1,6 @@
 [
     {
         "id": 0,
-        "projectName": "CommunityALI",
-        "for": "Group Project",
-        "summary": "A student led project to help students at MJC find opportunities to get involved in clubs and organizations.",
-        "skills": ["React", "Next.js", "MongoDB", "HTML", "CSS", "JavaScript"],
-        "date": "2023-10-13",
-        "image": "images/communityali.png",
-        "github": "https://github.com/Community-ALI/CommunityALI-Website",
-        "live": "https://communityali.com/",
-        "page": "communityali.html"
-    },
-    {
-        "id": 1,
         "projectName": "Wrecking Wheels",
         "for": "Personal Project",
         "summary": "A physics based browser game where players build vehicles from blocks and complete ever more difficult levels.",
@@ -24,7 +12,7 @@
         "page": "wrecking-wheels.html"
     },
     {
-        "id": 2,
+        "id": 1,
         "projectName": "Lego Sorter",
         "for": "Personal Project",
         "summary": "Automated lego sorter that uses an Arduino and a Raspberry Pi to sort legos by color.",
@@ -34,6 +22,18 @@
         "github": "https://github.com/BSchoolland/lego-sorter",
         "live": "",
         "page": "lego-sorter.html"
+    },
+    {
+        "id": 2,
+        "projectName": "CommunityALI",
+        "for": "Group Project",
+        "summary": "A student led project to help students at MJC find opportunities to get involved in clubs and organizations.",
+        "skills": ["React", "Next.js", "MongoDB", "HTML", "CSS", "JavaScript"],
+        "date": "2023-10-13",
+        "image": "images/communityali.png",
+        "github": "https://github.com/Community-ALI/CommunityALI-Website",
+        "live": "https://communityali.com/",
+        "page": "communityali.html"
     },
     {
         "id": 3,
