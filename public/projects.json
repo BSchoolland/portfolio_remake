@@ -87,7 +87,7 @@
         "id": 7,
         "projectName": "Connect Four Bot",
         "for": "Personal Project",
-        "summary": "A bot that plays connect four using a minimax algorithm",
+        "summary": "A bot that plays connect four in the terminal using a minimax algorithm",
         "skills": ["Python"],
         "date": "2023-05-14",
         "image": "images/connectfour.png",

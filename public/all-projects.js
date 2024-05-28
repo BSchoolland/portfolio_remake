@@ -11,13 +11,11 @@ function setFiltersFromUrl() {
     if (searchQuery) document.getElementById("search").value = searchQuery;
 }
 
-
 setFiltersFromUrl();
 document.addEventListener("DOMContentLoaded", async function () {
     fetch("/projects.json")
         .then((response) => response.json())
         .then((projects) => {
-            
             // Populating the filter dropdown with unique skills
             const allSkills = projects.flatMap((project) => project.skills);
             const uniqueSkills = Array.from(new Set(allSkills)).sort();
@@ -44,16 +42,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const filterSkill = document.getElementById("filter").value;
                 const projectType = document.getElementById("for").value;
                 const searchQuery = document.getElementById("search").value;
-            
+
                 const params = new URLSearchParams(window.location.search);
                 params.set("order", order);
                 params.set("filter", filterSkill);
                 params.set("for", projectType);
                 params.set("search", searchQuery);
-            
-                history.pushState({}, '', `${window.location.pathname}?${params}`);
+
+                history.pushState(
+                    {},
+                    "",
+                    `${window.location.pathname}?${params}`
+                );
             }
-            
+
             function handleFilterChange() {
                 const order = document.getElementById("order").value;
                 const filterSkill = document.getElementById("filter").value;
@@ -90,16 +92,19 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
 
                 // Search
-                const searchQuery = document.getElementById("search").value.toLowerCase();
+                const searchQuery = document
+                    .getElementById("search")
+                    .value.toLowerCase();
                 if (searchQuery) {
                     // in name or summary
                     filteredProjects = filteredProjects.filter(
                         (project) =>
-                            project.projectName.toLowerCase().includes(searchQuery) ||
+                            project.projectName
+                                .toLowerCase()
+                                .includes(searchQuery) ||
                             project.summary.toLowerCase().includes(searchQuery)
                     );
                 }
-
 
                 updateDisplay(filteredProjects);
             }
@@ -110,7 +115,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 );
                 container.innerHTML = ""; // Clear current content
                 if (filteredProjects.length === 0) {
-                    container.innerHTML = "<p>No projects found with these filters.</p>";
+                    container.innerHTML =
+                        "<p>No projects found with these filters.</p>";
                     return;
                 }
                 filteredProjects.forEach((project) => {
@@ -124,11 +130,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                     if (project.page)
                         linksHtml += `<a href="${project.page}" target="_blank">More Info</a>`;
                     projectDiv.innerHTML = `
-                <h3>${project.projectName}</h3>
-                <p>${project.summary}</p>
-                ${linksHtml}
-                <img src="${project.image}" alt="${project.projectName}" />
-            `;
+                        <h3>${project.projectName}</h3>
+                        <p>${project.summary}</p>
+                        <div style="display: flex; justify-content: center;">
+                            <img src="${project.image}" style="max-width: 75%; max-height: 300px;" alt="${project.projectName}" />
+                        </div>
+                        <br />
+                        ${linksHtml}
+                    `;
                     container.appendChild(projectDiv);
                 });
             }
@@ -137,8 +146,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             }, 0);
 
             // when the user types in the search box, filter the projects
-            document.getElementById("search").addEventListener("input", handleFilterChange);
-            
+            document
+                .getElementById("search")
+                .addEventListener("input", handleFilterChange);
+
             document
                 .getElementById("filter")
                 .insertAdjacentHTML(
@@ -148,4 +159,3 @@ document.addEventListener("DOMContentLoaded", async function () {
         })
         .catch((error) => console.error("Error:", error));
 });
-
