@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project: CommunityALI</title>
+    <title>Project: Web Scraper</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
     <link rel="icon" href="../images/favicon.ico">
 </head>
+
 <body>
     <section class="header">
         <div class="header-inner">
@@ -30,28 +32,47 @@
     </section>
     <section class="content">
         <div class="content-inner">
-            <h2>Project: CommunityALI</h2>
-            <p>CommunityALI is a project I worked on with a group of students at Modesto Junior College. It was my first experiance building a web application, and I learned a lot about the technology as well as working with a group.</p>
+            <h2>Web Scraping Project at Digital NEST</h2>
+            <p>At Digital NEST, I was part of an intern group developing a web scraping
+                application aimed at aggregating job listings from various sites like Indeed and LinkedIn. This tool is
+                designed to help interns and Digital NEST members find potential career opportunities.</p>
 
-            <h3>The plan:</h3>
-            <p>Our goal was to build a web application that would allow students to connect with opportunities in the community. We wanted to make it easy for students to find volunteer opportunities, internships, and jobs in the area, and to make it easy for organizations to post these opportunities.  One key part of the project was our involvement in Solve Community Challenges, which is an organization with the goal of empowering students to solve problems in their community. The video below shows our project, and overviews what we originally planned to build in a fun way.</p>
-            <div style="display: flex; justify-content: center;">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cxzFG4NxUCI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <h3>Project Contributions</h3>
+            <p>Leading Backend Development: Because I already have some experience in backend development, I've written
+                most of the code for the scraping process and mentored team members new to this area. It's rewarding to
+                see my peers, primarily frontend developers, expand their backend skills.</p>
 
+            <p>So far, our team has:</p>
+            <ul>
+                <li>Developed a visually appealing frontend using React.js.</li>
+                <li>Integrated it with a backend server on Node.js.</li>
+                <li>Implemented a temporary "database" with Google Sheets, offering a no-code setup for configuring our
+                    scraper and viewing data.</li>
+                <li>Built robust web scrapers using Puppeteer and Cheerio that navigate sitemaps and extract data
+                    effectively.</li>
+            </ul>
 
-            <h3>First Steps:</h3>
-            <p>Once we had a plan, we started building the application. We didn't know much about web development, so we started by learning the basics of HTML, CSS, JavaScript, with Node.js and express on the backend. Once we had a good understanding of these, we started building the application.  Our first test was to use the website as a way for students to sign up for the computer science club at Modesto Junior College's club rush.  The test was a success, and we were able to test the website with real users, and get feedback on how to improve it.</p>
+            <h3>Key Learnings</h3>
+            <ul>
+            <li>Handling messy data: The process of parsing raw HTML into useful data has been a very unique coding
+                experience, and has taught me the value of good error handling.</li>
+            <li>Reusability and Maintainability: My first attempt at web scraping worked, but it was inflexible. After
+                rewriting it as a reusable class that accepts a JSON sitemap, it became much easier to work with and
+                configure to work on a variety of sites. This has only reaffirmed the idea that when forced to choose
+                between making something quickly or making something maintainable, I should always focus on
+                maintainability.</li>
+            <li>Scraping Ethically: If done carelessly, web scraping can be damaging to websites or violate their rules.
+                As such, our team has made sure to get permission as well as making sure our code doesn’t make too many
+                requests in a short period of time.</li>
+            </ul>
+            <p>I'm looking forward to refining this tool, and I hope it will be impactful for the interns and members
+                here at the NEST!</p>
+            <p>I am also excited to see what else I can do with puppeteer. After working (somewhat painfully) with raw
+                and changing HTML data, I have a theory that using the ChatGPT API in combination with our configurable
+                web scraper tool could prove very useful…</p>
 
-            <h3>Building the application:</h3>
-            <p>With the concept proven, we really got to work.  Over the next year we refactored to use React, and added a lot of features to the site. The system became quite complex, with a database, user authentication, and an admin account system to allow club officers to manage their own club page, and send out announcements to their members.  The site also allowed for events to be posted, and we even collected internship opportunities from around the area to put on the site.  Overall, the site was a moderate success, most school clubs at least had a page on the site, and we got a lot of recognition for our work.  
-                
-                <h3>Challenges</h3>
-                <p>That being said, the site was never able to get official support from the school, and as a result, it was never able to reach its full potential. Another issue was that none of us had any experience with web development, so the codebase grew progressively harder to maintain as time went on.  </p>
+            <p>I can't show the full project code as it is an internal tool and not open source, but I am able to share part of the code I wrote for the project, namely a powerful and reusable web scraper class: </p>
 
-            <h3>What I learned:</h3>
-            <p>CommunityALI was a great learning experience for me. It was my first experiance with web development, and the soft skills gained from working with the group in a leadership role are invaluable.  Overall, I'd say this project had the biggest impact on my career up to that point, and I'm very proud of the work we did.</p>
-            
         </div>
     </section>
     <section class="links">
@@ -66,7 +87,8 @@
             <p>Benjamin Schoolland</p>
         </div>
     </section>
-    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+    <div id="loading-screen"
+        style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
         <p>Loading...</p>
     </div>
     <script>
@@ -87,7 +109,7 @@
                     img.style = "max-width: 100%; max-height: 800px";
 
                     // Wait for the image to load
-                    img.onload = function() {
+                    img.onload = function () {
                         intro.innerHTML = `
                             <h1>${project.projectName}</h1>
                             <p>${project.summary}</p>
@@ -115,4 +137,5 @@
     </script>
 
 </body>
+
 </html>

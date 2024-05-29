@@ -55,7 +55,7 @@
         "skills": ["React", "JavaScript", "Node.js", "Express"],
         "date": "2024-05-12",
         "image": "images/webscraper.png",
-        "github": "",
+        "github": "https://github.com/BSchoolland/web-scraper",
         "live": "",
         "page": "/pages/web-scraper.html"
     },
@@ -139,7 +139,7 @@
         "skills": ["HTML", "CSS", "JavaScript", "Node.js", "Express"],
         "date": "2024-06-01",
         "image": "images/portfolio2.png",
-        "github": "FIXME: add this",
+        "github": "https://github.com/BSchoolland/portfolio_remake",
         "live": "https://bschoolland.com/",
         "page": "/pages/portfolio.html"
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project: CommunityALI</title>
+    <title>Project: Next.js Components</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
     <link rel="icon" href="../images/favicon.ico">
 </head>
@@ -30,29 +30,30 @@
     </section>
     <section class="content">
         <div class="content-inner">
-            <h2>Project: CommunityALI</h2>
-            <p>CommunityALI is a project I worked on with a group of students at Modesto Junior College. It was my first experiance building a web application, and I learned a lot about the technology as well as working with a group.</p>
-
-            <h3>The plan:</h3>
-            <p>Our goal was to build a web application that would allow students to connect with opportunities in the community. We wanted to make it easy for students to find volunteer opportunities, internships, and jobs in the area, and to make it easy for organizations to post these opportunities.  One key part of the project was our involvement in Solve Community Challenges, which is an organization with the goal of empowering students to solve problems in their community. The video below shows our project, and overviews what we originally planned to build in a fun way.</p>
-            <div style="display: flex; justify-content: center;">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cxzFG4NxUCI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h2>
+                Project: Next.js Components
+            </h2>
+            <p>Next.js is a powerful framework for building React applications. This project was created by the Bay Valley Tech interns, myself included, to showcase our skills as well as create something useful for any future projects. </p>
+            <h3>
+                Project Goals:
+            </h3>
+            <p>
+                The components were designed to be as reusable and customizable as possible. We wanted to create a library of components that could be easily imported into any Next.js project and used with minimal setup. Another key focus was on documentation. We wanted to make sure that anyone who used these components would be able to understand how to use them and what they were capable of.
+            </p>
+            <h3>
+                Components I Created or Contributed to:
+            </h3>
+            <ul>
+                <li>Toast Notifications: A simple component that allows you to display notifications to the user. The code includes a custom "useToast" hook that makes it easy to display notifications from anywhere in your app.  I built this mostly on my own.</li>
+                <li>Tooltip: A component that displays a tooltip when you hover over an element. The tooltip is fully customizable and can be used to display any content you want. I also built this component without much help.</li>
+                <li>Chatbot Component: A component that displays a chatbot interface. It integrates with OpenAI's gpt-3.5 to provide a chatbot that can answer questions and hold a conversation. I worked on this component with another intern.</li>
+            </ul>
+            <h3>
+                Conclusion:
+            </h3>
+            <p>
+                This project was more of a group of mini-projects, but each one was a great way to practice documentation and building reusable and maintainable code.  
             </div>
-
-
-            <h3>First Steps:</h3>
-            <p>Once we had a plan, we started building the application. We didn't know much about web development, so we started by learning the basics of HTML, CSS, JavaScript, with Node.js and express on the backend. Once we had a good understanding of these, we started building the application.  Our first test was to use the website as a way for students to sign up for the computer science club at Modesto Junior College's club rush.  The test was a success, and we were able to test the website with real users, and get feedback on how to improve it.</p>
-
-            <h3>Building the application:</h3>
-            <p>With the concept proven, we really got to work.  Over the next year we refactored to use React, and added a lot of features to the site. The system became quite complex, with a database, user authentication, and an admin account system to allow club officers to manage their own club page, and send out announcements to their members.  The site also allowed for events to be posted, and we even collected internship opportunities from around the area to put on the site.  Overall, the site was a moderate success, most school clubs at least had a page on the site, and we got a lot of recognition for our work.  
-                
-                <h3>Challenges</h3>
-                <p>That being said, the site was never able to get official support from the school, and as a result, it was never able to reach its full potential. Another issue was that none of us had any experience with web development, so the codebase grew progressively harder to maintain as time went on.  </p>
-
-            <h3>What I learned:</h3>
-            <p>CommunityALI was a great learning experience for me. It was my first experiance with web development, and the soft skills gained from working with the group in a leadership role are invaluable.  Overall, I'd say this project had the biggest impact on my career up to that point, and I'm very proud of the work we did.</p>
-            
-        </div>
     </section>
     <section class="links">
         <div class="links-inner">
@@ -84,7 +85,7 @@
                     const img = new Image();
                     img.src = `../${project.image}`;
                     img.alt = `${project.projectName}`;
-                    img.style = "max-width: 100%; max-height: 800px";
+                    img.style = "max-width: 100%; max-height: 500px; margin: auto; display: block;";
 
                     // Wait for the image to load
                     img.onload = function() {
@@ -93,7 +94,7 @@
                             <p>${project.summary}</p>
                             <div style="display: flex; justify-content: center;">
                         `;
-                        intro.appendChild(img); // Add the image to the DOM
+                        intro.appendChild(img);
 
                         if (project.github) {
                             links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
