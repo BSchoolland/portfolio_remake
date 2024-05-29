@@ -118,16 +118,16 @@ document.addEventListener("DOMContentLoaded", async function () {
                     projectDiv.className = "project";
                     let linksHtml = "";
                     if (project.live)
-                        linksHtml += `<a href="${project.live}" target="_blank">Live</a>`;
+                        linksHtml += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live</a>`;
                     if (project.github)
                         linksHtml += `<a href="${project.github}" target="_blank">GitHub</a>`;
                     if (project.page)
-                        linksHtml += `<a href="${project.page}" target="_blank">More Info</a>`;
+                        linksHtml += `<a href="${project.page}">More Info</a>`;
                     projectDiv.innerHTML = `
                         <h3>${project.projectName}</h3>
                         <p>${project.summary}</p>
                         <div style="display: flex; justify-content: center;">
-                            <img src="${project.image}" style="max-width: 75%; max-height: 300px;" alt="${project.projectName}" />
+                            <img src="${project.image}" style="max-width: 75%; max-height: 300px; cursor: pointer" alt="${project.projectName}" alt="${project.projectName}" onClick="window.location.href='${project.page}'" />
                         </div>
                         <br />
                         ${linksHtml}

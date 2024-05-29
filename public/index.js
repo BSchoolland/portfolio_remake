@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 projectDiv.className = "project";
                 let linksHtml = "";
                 if (project.live)
-                    linksHtml += `<a href="${project.live}" target="_blank">Live</a>`;
+                    linksHtml += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live</a>`;
                 if (project.github)
                     linksHtml += `<a href="${project.github}" target="_blank">GitHub</a>`;
                 if (project.page)

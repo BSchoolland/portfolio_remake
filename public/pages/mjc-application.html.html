@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project: Simple Chat App</title>
+    <title>Project: [project name]</title>
     <link rel="stylesheet" type="text/css" href="../styles.css">
     <link rel="icon" href="../images/favicon.ico">
 </head>
-
 <body>
     <section class="header">
         <div class="header-inner">
@@ -32,37 +30,14 @@
     </section>
     <section class="content">
         <div class="content-inner">
-            <h2>Simple Chat App</h2>
-            <p>Something that is crucial for all programmers is to be able to understand and work inside of other
-                people's codebases. This is a skill that I personally want to improve at.</p>
-
-            <p>I was brought onto an existing project at my new internship for Bay Valley Tech - Free Code
-                Academy. The project was an instant messaging web app, and a lot of people had already put a lot of time
-                and effort into it. Since this was one of the first times I had the opportunity to work in a complex
-                codebase I didn't help create, I wanted to be as knowledgeable as I could about the project's tech
-                stack.
-                One particular area I had no experience in initially was using Google's Firestore database for real-time
-                messaging.</p>
-
-            <p>Because I wanted to better understand Firestore, I spent some time creating
-                a very simple instant messaging web application using a Firestore database. It was a great
-                opportunity to learn more about the technology, and I wanted to share my thoughts.</p>
-
-            <h3>Key Insights from Using Firestore</h3>
-            <ol>
-                <li><strong>Real Time Synchronization:</strong> Firestore made it very easy to implement this feature.
-                    With a simple function call, the database would automatically update listening clients whenever
-                    relevant data was modified.</li>
-                <li><strong>Direct Frontend to Database Communication:</strong> This was hard to get used to, but
-                    Firestore allowed you to set up custom read and write permissions based on whether a user was
-                    authenticated, which meant exposing the API key on the frontend was safe under certain conditions.
-                </li>
-                <li><strong>NoSQL:</strong> Firestore is a NoSQL database, meaning data is stored in collections and
-                    documents, not tables. Both SQL and NoSQL have their use cases, and while I liked the structuredness
-                    of SQL I could see how the flexibility of something like Firestore could be nice.</li>
-            </ol>
-
-
+            <h2>
+                MJC Club Paperwork website
+            </h2>
+            <p>This website was designed to help MJC clubs fill out the required forms to be recognized as an official club on campus.  This site was built with the same group who created the CommunityALI platform, leveraging </p>
+            <h3>
+                Identified problem
+            </h3>
+            <
         </div>
     </section>
     <section class="links">
@@ -77,8 +52,7 @@
             <p>Benjamin Schoolland</p>
         </div>
     </section>
-    <div id="loading-screen"
-        style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
         <p>Loading...</p>
     </div>
     <script>
@@ -99,7 +73,7 @@
                     img.style = "max-width: 100%; max-height: 800px";
 
                     // Wait for the image to load
-                    img.onload = function () {
+                    img.onload = function() {
                         intro.innerHTML = `
                             <h1>${project.projectName}</h1>
                             <p>${project.summary}</p>
@@ -127,5 +101,4 @@
     </script>
 
 </body>
-
 </html>
