@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Old Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>
+                My Old Portfolio
+            </h2>
+            <p>
+                This project was my first portfolio website. Unlike my current portfolio, this one was built using Next.js, and was focused on looking visually impressive. 
+            </p>
+            <h3>Project Overview</h3>
+            <p>
+                The project aimed to showcase my work in a creative and visually appealing way.  It featured an unconventional layout, with some mini interactive projects in the hero section instead of the usual image of myself.  The design sported a lot of diagonal lines and and a very blue color scheme, as well as several animations.  
+            <h3>So why did I change it?</h3>
+            <p>
+                While the visual design of this portfolio was impressive, it had some issues with mobile responsiveness, and was not as easy to update or maintain as I would have liked.  The main issue was the way I had structured the project. I had focused on making it look unique, rather than doing things the right way. This could possibly work for someone more into design than development, but my focus is on the more technical aspects of coding, so I decided to rebuild it using plain HTML, CSS, and JavaScript.  My new focus is on providing solid information in a way that is as easy to understand as well as update as possible, with visuals taking a back seat.  
+            </p>
+            
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img); // Add the image to the DOM
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.live) {
+                            links.innerHTML += `<a href="${project.live}" target="_blank">Live Site</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+
+</body>
+</html>
