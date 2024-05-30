@@ -28,7 +28,7 @@
         "projectName": "CommunityALI",
         "for": "Group Project",
         "summary": "A student led project to help students at MJC find opportunities to get involved in clubs and organizations, as well as service learning.",
-        "skills": ["React", "Next.js", "MongoDB", "HTML", "CSS", "JavaScript"],
+        "skills": ["React", "MongoDB", "HTML", "CSS", "JavaScript"],
         "date": "2023-10-13",
         "image": "images/communityali.png",
         "github": "https://github.com/Community-ALI/CommunityALI-Website",
