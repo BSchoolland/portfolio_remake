@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Sudoku Solver</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>
+                Sudoku Solver
+            </h2>
+            <p>
+                This is one of my first projects, made while I was still in high school. It is a simple sudoku solver that uses a backtracking algorithm to solve any sudoku puzzle. I chose the project as a way to challenge myself and learn more about programming outside of school.
+            </p>
+            <h3>How it works</h3>
+            <p>
+                The solver works using what's called a backtracking algorithm. The algorithm works by trying numbers in a cell until on is valid, then moving on to the next cell. If the algorithm reaches a cell where no number is valid, it backtracks to the previous cell and tries a different number. It's a simple but effective way to solve sudoku puzzles through brute force.
+            </p>
+            <h3>Project Reflection</h3>
+            <p>
+                This project, while objectively fairly simple, was a real challenge for me, as I was still in my first semester of programming courses while dual enrolled at Modesto Junior College. The project involved hours of research and work along with many concepts I hadn't yet learned in class.  I quickly came to realize that this is the rule rather than the exception in computer science. Overall, this project and others I made around the same time were a great learning experience, and layed the foundation I needed to continue learning and growing outside of the classroom.
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img); // Add the image to the DOM
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.live) {
+                            links.innerHTML += `<a href="${project.live}" target="_blank">Live Site</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+
+</body>
+</html>
