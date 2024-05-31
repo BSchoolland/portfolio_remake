@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Benjamin's Portfolio</title>
     <meta name="description" content="This is Benjamin's portfolio, showcasing his projects and skills.">
@@ -11,15 +12,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="Benjamin's Portfolio">
     <meta property="og:description" content="This is Benjamin's portfolio, showcasing his projects and skills.">
-    <meta property="og:image" content="path_to_thumbnail_image"> 
+    <meta property="og:image" content="path_to_thumbnail_image">
     <!-- FIXME: add thumbnail -->
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="icon" href="images/favicon.ico">
+    <link rel="preload" href="images/ben.png" as="image">
+    <style>
+        body, html {
+          margin: 0;
+        }
+        canvas {
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          pointer-events: none;
+        }
+        canvas.front {
+        width: 100%;
+          z-index: 0;
+        }
+    </style>
 </head>
 
 </html>
 
 <body>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2" class="front"></canvas>
+    <script src="comet.js"></script>
     <section class="header">
         <div class="header-inner">
             <nav>
@@ -37,21 +60,37 @@
     </section>
     <section class="hero">
         <div class="hero-inner">
-            <h1>Benjamin Schoolland</h1>
-            <p>I'm an aspiring software developer with experience in fullstack web development and a strong foundation
-                across multiple programming languages and frameworks. I'm intensely focused on creating programming
-                projects I can be proud of, from robotics to web development.</p>
+            <div>
+                <h1>Benjamin Schoolland</h1>
+                <p>I'm an aspiring software developer with experience in fullstack web development and a strong
+                    foundation
+                    across multiple programming languages and frameworks. I'm intensely focused on creating programming
+                    projects I can be proud of, from robotics to web development.</p>
+            </div>
             <img src="images/ben.png" alt="Professional photo of Benjamin Schoolland">
         </div>
     </section>
+
     <section class="about">
         <div class="about-inner">
             <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
             <h3>My Journey</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
             <h3>Looking Ahead</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
         </div>
     </section>
     <section class="projects">
@@ -66,22 +105,33 @@
         <div class="skills-inner">
             <h2>Skills</h2>
             <ul>
-                <li onclick="window.location.href='/all-projects?filter=HTML'"><a href="/all-projects?filter=HTML">HTML</a></li>
-                <li onclick="window.location.href='/all-projects?filter=CSS'"><a href="/all-projects?filter=CSS">CSS</a></li>
-                <li onclick="window.location.href='/all-projects?filter=JavaScript'"><a href="/all-projects?filter=JavaScript">JavaScript</a></li>
-                <li onclick="window.location.href='/all-projects?filter=React'"><a href="/all-projects?filter=React">React</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Next.js'"><a href="/all-projects?filter=Next.js">Next.js</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Node.js'"><a href="/all-projects?filter=Node.js">Node.js</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Express'"><a href="/all-projects?filter=Express">Express</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Python'"><a href="/all-projects?filter=Python">Python</a></li>
-                <li onclick="window.location.href='/all-projects?filter=SQL'"><a href="/all-projects?filter=SQL">SQL</a></li>
+                <li onclick="window.location.href='/all-projects?filter=HTML'"><a
+                        href="/all-projects?filter=HTML">HTML</a></li>
+                <li onclick="window.location.href='/all-projects?filter=CSS'"><a href="/all-projects?filter=CSS">CSS</a>
+                </li>
+                <li onclick="window.location.href='/all-projects?filter=JavaScript'"><a
+                        href="/all-projects?filter=JavaScript">JavaScript</a></li>
+                <li onclick="window.location.href='/all-projects?filter=React'"><a
+                        href="/all-projects?filter=React">React</a></li>
+                <li onclick="window.location.href='/all-projects?filter=Next.js'"><a
+                        href="/all-projects?filter=Next.js">Next.js</a></li>
+                <li onclick="window.location.href='/all-projects?filter=Node.js'"><a
+                        href="/all-projects?filter=Node.js">Node.js</a></li>
+                <li onclick="window.location.href='/all-projects?filter=Express'"><a
+                        href="/all-projects?filter=Express">Express</a></li>
+                <li onclick="window.location.href='/all-projects?filter=Python'"><a
+                        href="/all-projects?filter=Python">Python</a></li>
+                <li onclick="window.location.href='/all-projects?filter=SQL'"><a href="/all-projects?filter=SQL">SQL</a>
+                </li>
             </ul>
         </div>
     </section>
     <section class="other-projects">
         <div class="other-projects-inner">
             <h2>All Projects</h2>
-            <p>Programming isn't just a job for me, it was a hobby long before I started my career. Because of this, I'm always working on some side project I find interesting, and growing the list of things I've made. If you want to see all of my projects, click the link below.</p>
+            <p>Programming isn't just a job for me, it was a hobby long before I started my career. Because of this, I'm
+                always working on some side project I find interesting, and growing the list of things I've made. If you
+                want to see all of my projects, click the link below.</p>
             <a href="/all-projects">View All My Projects</a>
         </div>
     </section>

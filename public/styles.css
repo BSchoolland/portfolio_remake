@@ -6,6 +6,13 @@
     --accent-color: #4c8aff; /* Brighter blue for accents */
     --text-color: #ccc; /* Light grey text */
     --header-background-color: #20232a; /* Slightly darker grey for header */
+    /* light mode variables */
+    --light-primary-color: #333; /* Dark grey for text */
+    --light-secondary-color: #555; /* Medium grey for less emphasized text */
+    --light-background-color: #fff8ef; /* Light grey background */
+    --light-accent-color: #4c8aff; /* Brighter blue for accents */
+    --light-text-color: #303030; /* Medium grey text */
+    --light-header-background-color: #f0f0f0; /* Light grey for header */
 }
 
 body {
@@ -17,9 +24,11 @@ body {
 }
 
 .header {
+    position: relative;
     background-color: var(--header-background-color);
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
 }
 
 .header-inner {
@@ -63,18 +72,18 @@ nav ul li a {
 }
 
 .hero {
-    background-color: var(--header-background-color);
-    padding: 20px;
-    text-align: center;
+    position: relative;
+    /* background-color: var(--light-background-color); */
+    color: var(--text-color);
+    z-index: -1;
+    min-height: 78vh;
 }
 
 .hero-inner {
     margin: 20px auto;
-    max-width: 600px;
-}
-
-.hero h1 {
-    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .hero p {
@@ -82,12 +91,27 @@ nav ul li a {
     color: var(--secondary-color);
 }
 
-.about, .projects, .skills, .other-projects, .contact, .intro, .content .links {
+.about {
+    background: linear-gradient(to bottom left ,  var(--light-background-color), #c08d00 200%);
+    transform: skewY(-2deg);
+    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    color: var(--light-text-color);
+}
+
+.about-inner {
+    transform: skewY(2deg);
+    margin: auto;
+    max-width: 800px;
+}
+
+.projects, .skills, .other-projects, .contact, .intro, .content .links {
     padding: 20px;
     margin-top: 20px;
 }
 
-.about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
+.projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
     margin: auto;
     max-width: 800px;
 }
@@ -135,7 +159,7 @@ nav ul li a {
 
 
 
-h2, h3 {
+h1, h2, h3 {
     color: var(--accent-color);
 }
 
@@ -195,6 +219,11 @@ h2, h3 {
 
     .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
         padding: 20px; /* Increased padding for better spacing */
+    }
+
+    .hero-inner, .about-inner {
+        display: flex;
+        flex-direction: column;
     }
 
     nav ul li {
