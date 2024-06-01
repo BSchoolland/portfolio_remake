@@ -240,6 +240,10 @@ nav ul li a {
     padding-bottom: 200px;
 }
 
+.projects h3 {
+    font-size: 2rem;
+}
+
 .projects-inner {
     margin: auto;
     padding-left: 5rem;
@@ -268,7 +272,7 @@ nav ul li a {
     align-items: center;
     @media screen and (max-width: 768px){
         padding: 10px 2rem;
-        
+        padding-bottom: 20px;
     }
 }
 
@@ -400,6 +404,66 @@ h1 {
     align-items: center;
     z-index: 1000;
 }
+
+.filter {
+    transform: skewY(-2deg);
+    margin: auto;
+    max-width: 800px;
+    margin-bottom: 50px;
+}
+
+.filter-inner input, .filter-inner select {
+    background-color: var(--header-background-color);
+    color: var(--dark-text-color);
+    border: 1px solid var(--secondary-color); 
+    padding: 10px; 
+    border-radius: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
+    margin-bottom: 15px; 
+}
+
+.filter-inner select {
+    width: 20%;
+}
+.filter-inner a {
+    background-color: var(--action-color);
+    color: var(--dark-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 50%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.filter-inner a:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-text-color);
+}
+.filter-inner input:focus, .filter-inner select:focus {
+    border-color: var(--action-color); /* Brighter blue border on focus for better accessibility */
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 3px rgba(76, 138, 255, 0.5); /* Soft glow effect for focus */
+}
+
+.all-projects {
+    margin: 50px;
+}
+
+.all-projects-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 20px;
+    padding: 20px;
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+}
+
+
 
 @media (max-width: 768px) {
     body {

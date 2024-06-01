@@ -113,7 +113,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                         "<p>No projects found with these filters.</p>";
                     return;
                 }
+
                 filteredProjects.forEach((project) => {
+                    let skillsHtml = "<div>";
+                    project.skills.forEach((skill) => {
+                        skillsHtml += `<img class="project-skill-image" src="images/icons/${skill}.png" alt="${skill}" />`;
+                    });
+                    skillsHtml += "</div>";
+
                     const projectDiv = document.createElement("div");
                     projectDiv.className = "project";
                     let linksHtml = "";
@@ -125,12 +132,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                         linksHtml += `<a href="${project.page}">More Info</a>`;
                     projectDiv.innerHTML = `
                         <h3>${project.projectName}</h3>
+                        ${skillsHtml}
                         <p>${project.summary}</p>
                         <div style="display: flex; justify-content: center;">
                             <img src="${project.image}" style="max-width: 75%; max-height: 300px; cursor: pointer" alt="${project.projectName}" alt="${project.projectName}" onClick="window.location.href='${project.page}'" />
                         </div>
                         <br />
+                        <div>
                         ${linksHtml}
+                        </div>
                     `;
                     container.appendChild(projectDiv);
                 });
