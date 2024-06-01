@@ -54,3 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+const showPhone = document.getElementById('show-phone');
+showPhone.addEventListener('click', function() {
+    showPhone.innerHTML = '(209)'
+    showPhone.innerHTML += ' 573-'
+    showPhone.innerHTML += '0059'
+});
