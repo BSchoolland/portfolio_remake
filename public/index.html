@@ -38,7 +38,8 @@
             width: 100%;
             height: fit-content;
             overflow: hidden;
-            margin: 100px 0; /* Position it lower down the page */
+            margin: 100px 0;
+            /* Position it lower down the page */
         }
 
         canvas.front {
@@ -83,7 +84,7 @@
                 <h1>Benjamin Schoolland</h1>
                 <p>Aspiring software developer with experience in fullstack web development and a strong
                     foundation across multiple programming languages.</p>
-                <button onclick="window.location.href='/all-projects'">View All Projects</button>
+                <button onclick="window.location.href='#projects'">View my Projects</button>
             </div>
             <img src="images/ben.png" alt="Professional photo of Benjamin Schoolland">
         </div>
@@ -91,114 +92,123 @@
 
     <section class="about" id="about">
         <div class="about-inner">
-            
-            <h1 >About Me</h1>
+
+            <h1>About Me</h1>
             <h3>Hi, I'm Ben, here's a little about me:</h3>
             <div class="about-grid">
-                
+
                 <div>
                     <h2>Experience</h2>
                     <p><b>Programming intern</b> at Bay Valley Tech: 4/2024 - Present</p>
                     <p><b>Web development intern</b> at Digital NEST: 12/2023 - Present</p>
-                    <p><b>Lego Robotics Instructor</b> at the Modesto Academy of Music and Design: 8/2021 - 4/2024 </p>           
+                    <p><b>Lego Robotics Instructor</b> at the Modesto Academy of Music and Design: 8/2021 - 4/2024 </p>
 
-                    </div>
+                </div>
                 <div>
                     <h2>Interests</h2>
-                    <p><b>I live to make stuff.</b>  My interests are ever changing, but they always revolve around some side project, from designing my own board game to building an AI tool.
+                    <p><b>I live to make stuff.</b> My interests are ever changing, but they always revolve around some
+                        side project, from designing my own board game to building an AI tool.
                 </div>
                 <div>
                     <h2>Education</h2>
-                    <p>I have an <b>Associates in Computer Science</b> from Modesto Junior College, but I'm better described as a self taught programmer. 90% of what I know I learned from real world experience, online resources, and personal projects.</p>
+                    <p>I have an <b>Associates in Computer Science</b> from Modesto Junior College, but I'm better
+                        described as a self taught programmer. 90% of what I know I learned from real world experience,
+                        online resources, and personal projects.</p>
                 </div>
                 <div>
                     <h2>Mindset</h2>
-                    <p>The most important thing to me is not how successful I become or how much fun I can have, but what kind of positive <b>impact</b> I can have on people and the world around me.  I believe that true fulfillment comes from what I can give, not what I can receive.</p>
-                <script>
-                    // Select the elements
-                    var cards = document.querySelectorAll('.about-grid div');
-                    cards.forEach(function(card) {
-                        var hue;
-                        do {
-                            hue = Math.random() * 360;
-                        } while (hue >= 260 && hue <= 290);
-                        card.style.backgroundColor = 'hsl(' + hue + ', 50%, ' + (Math.random() * 10 + 80) + '%)';
-                    });
-
-                    // Define the Intersection Observer
-                    var observer = new IntersectionObserver(function(entries) {
-                        entries.forEach(function(entry) {
-                            // If the element is in view
-                            if (entry.isIntersecting) {
-                                // Loop through the elements
-                                for (var i = 0; i < cards.length; i++) {
-                                    // Add the animation to the element with a delay
-                                    cards[i].style.animation = 'flipIn 1s ease forwards ' + i * 0.2 + 's';
-
-                                }
-                                // Disconnect the observer after the animations have been added
-                                observer.disconnect();
-                            }
+                    <p>The most important thing to me is not how successful I become or how much fun I can have, but
+                        what kind of positive <b>impact</b> I can have on people and the world around me. I believe that
+                        true fulfillment comes from what I can give, not what I can receive.</p>
+                    <script>
+                        // Select the elements
+                        var cards = document.querySelectorAll('.about-grid div');
+                        cards.forEach(function (card) {
+                            var hue;
+                            do {
+                                hue = Math.random() * 360;
+                            } while (hue >= 260 && hue <= 290);
+                            card.style.backgroundColor = 'hsl(' + hue + ', 50%, ' + (Math.random() * 10 + 80) + '%)';
                         });
-                    }, { threshold: 0.1 }); // Trigger when 10% of the element is in view
 
-                    // Observe the first card
-                    observer.observe(cards[0]);
-                </script>   
+                        // Define the Intersection Observer
+                        var observer = new IntersectionObserver(function (entries) {
+                            entries.forEach(function (entry) {
+                                // If the element is in view
+                                if (entry.isIntersecting) {
+                                    // Loop through the elements
+                                    for (var i = 0; i < cards.length; i++) {
+                                        // Add the animation to the element with a delay
+                                        cards[i].style.animation = 'flipIn 1s ease forwards ' + i * 0.2 + 's';
+
+                                    }
+                                    // Disconnect the observer after the animations have been added
+                                    observer.disconnect();
+                                }
+                            });
+                        }, { threshold: 0.1 }); // Trigger when 10% of the element is in view
+
+                        // Observe the first card
+                        observer.observe(cards[0]);
+                    </script>
+                </div>
             </div>
-        </div>
     </section>
-    <section class="projects binary-background" >
+    <section class="projects binary-background">
         <canvas id="binaryCanvas"></canvas>
         <div class="projects-inner">
-            <h1>My Best Work</h2>
-            <div id="projects-container">
-                <!-- to be populated by JavaScript -->
+            <h1 id="projects">My Best Work</h2>
+                <div id="projects-container">
+                    <!-- to be populated by JavaScript -->
+                </div>
+        </div>
+    </section>
+    <div class="bottom-section">
+        <section class="skills" id="skills">
+            <div class="skills-inner">
+                <h2>Skills</h2>
+                <ul>
+                    <li onclick="window.location.href='/all-projects?filter=HTML'"><a
+                            href="/all-projects?filter=HTML">HTML</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=CSS'"><a
+                            href="/all-projects?filter=CSS">CSS</a>
+                    </li>
+                    <li onclick="window.location.href='/all-projects?filter=JavaScript'"><a
+                            href="/all-projects?filter=JavaScript">JavaScript</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=React'"><a
+                            href="/all-projects?filter=React">React</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=Next.js'"><a
+                            href="/all-projects?filter=Next.js">Next.js</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=Node.js'"><a
+                            href="/all-projects?filter=Node.js">Node.js</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=Python'"><a
+                            href="/all-projects?filter=Python">Python</a></li>
+                    <li onclick="window.location.href='/all-projects?filter=SQL'"><a
+                            href="/all-projects?filter=SQL">SQL</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
-    <section class="skills" id="skills">
-        <div class="skills-inner">
-            <h2>Skills</h2>
-            <ul>
-                <li onclick="window.location.href='/all-projects?filter=HTML'"><a
-                        href="/all-projects?filter=HTML">HTML</a></li>
-                <li onclick="window.location.href='/all-projects?filter=CSS'"><a href="/all-projects?filter=CSS">CSS</a>
-                </li>
-                <li onclick="window.location.href='/all-projects?filter=JavaScript'"><a
-                        href="/all-projects?filter=JavaScript">JavaScript</a></li>
-                <li onclick="window.location.href='/all-projects?filter=React'"><a
-                        href="/all-projects?filter=React">React</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Next.js'"><a
-                        href="/all-projects?filter=Next.js">Next.js</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Node.js'"><a
-                        href="/all-projects?filter=Node.js">Node.js</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Express'"><a
-                        href="/all-projects?filter=Express">Express</a></li>
-                <li onclick="window.location.href='/all-projects?filter=Python'"><a
-                        href="/all-projects?filter=Python">Python</a></li>
-                <li onclick="window.location.href='/all-projects?filter=SQL'"><a href="/all-projects?filter=SQL">SQL</a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="other-projects">
-        <div class="other-projects-inner">
-            <h2>All Projects</h2>
-            <p>Programming isn't just a job for me, it was a hobby long before I started my career. Because of this, I'm
-                always working on some side project I find interesting, and growing the list of things I've made. If you
-                want to see all of my projects, click the link below.</p>
-            <a href="/all-projects">View All My Projects</a>
-        </div>
-    </section>
-    <section class="contact" id="contact">
-        <div class="contact-inner">
-            <h2>Contact Me</h2>
-            <p>If you're interested in working with me, feel free to reach out on LinkedIn or text (<i
-                    id="show-phone">show phone number</i>).
-            </p>
-        </div>
-    </section>
+        </section>
+        <section class="other-projects">
+            <div class="other-projects-inner">
+                <h2>All Projects</h2>
+                <p>Programming isn't just a job for me, it was a hobby long before I started my career. Because of this,
+                    I'm
+                    always working on some side project I find interesting, and growing the list of things I've made. If
+                    you
+                    want to see all of my projects, click the link below.</p>
+                <a href="/all-projects">View All My Projects</a>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <div class="contact-inner">
+                <h2>Contact Me</h2>
+                <p>If you're interested in working with me, feel free to reach out on LinkedIn or text (<i
+                        id="show-phone">show phone number</i>).
+                </p>
+            </div>
+        </section>
+    </div>
     <br />
     <br />
     <section class="footer">

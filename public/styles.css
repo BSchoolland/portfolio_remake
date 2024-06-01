@@ -13,6 +13,7 @@
     --dark-primary-color: #000000; 
     --dark-secondary-color: #ffffff; 
     --dark-background-color: #00093d;
+    --dark-action-color: #00008f;
     --dark-accent-color: #b37400;
     --dark-text-color: #000000; 
     --dark-header-background-color: #f0f0f0; 
@@ -74,7 +75,7 @@ nav ul li a {
 
 .footer {
     position: relative;;
-    background-color: var(--header-background-color);
+    background-color: var(--background-color);
     padding: 10px 20px;
     min-height: 100px;
     display: flex;
@@ -105,7 +106,6 @@ nav ul li a {
 }
 
 .hero button {
-    position: relative;
     background-color: var(--action-color);
     color: var(--dark-text-color);
     border: none;
@@ -114,7 +114,6 @@ nav ul li a {
     margin-top: 20px;
     width: 50%;
     cursor: pointer;
-    z-index: 10;
 }
 
 .hero button:hover {
@@ -123,7 +122,7 @@ nav ul li a {
 }
 
 .about {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     background: linear-gradient(to bottom left ,  var(--dark-background-color), #00030c 50%, var(--dark-background-color) 100%);
     transform: skewY(-2deg);
     padding: 20px;
@@ -193,20 +192,24 @@ nav ul li a {
     }
 }
 
-.skills {
+.bottom-section {
     transform: skewY(2deg);
-    background-color: var(--dark-background-color);
+    background-color: rgb(0, 0, 0);
+    background: linear-gradient(to bottom right ,  var(--dark-background-color), #00030c 50%, var(--dark-background-color) 100%);
     padding: 20px;
     margin-top: -200px;
+    padding-bottom: 100px;
+    margin-bottom: -100px;
+}
+
+.skills {
     color: var(--dark-text-color);
 }
 
 .other-projects, .contact {
-    transform: skewY(2deg);
-    background-color: var(--dark-background-color);
     padding: 20px;
     margin-top: -5px;
-    color: var(--dark-text-color);
+    color: var(--text-color);
 }
 
 .skills-inner, .other-projects-inner, .contact-inner {
@@ -227,7 +230,7 @@ nav ul li a {
     margin-top: 20px;
 }
 
-.projects-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
+.other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
     margin: auto;
     max-width: 800px;
 }
@@ -235,6 +238,64 @@ nav ul li a {
 .projects {
     padding-top: 200px;
     padding-bottom: 200px;
+}
+
+.projects-inner {
+    margin: auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.projects-inner #projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 20px;
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+}
+
+.project {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 50, 0.7);
+    padding: 10px 2rem;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 768px){
+        padding: 10px 2rem;
+        
+    }
+}
+
+.project a {
+    background-color: var(--text-color);
+    color: var(--dark-text-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.project a:hover {
+    background-color: var(--action-color);
+}
+
+.project img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 10px;
+}
+
+.project-skill-image {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .links-inner {
@@ -249,27 +310,39 @@ nav ul li a {
 }
 
 .skills-inner a {
-    color: var(--primary-color);
+    color: var(--dark-text-color);
     text-decoration: none;
 }
 
 .other-projects-inner input, .other-projects-inner select {
-    background-color: var(--header-background-color); /* Use the darker grey background */
-    color: var(--primary-color); /* Light grey text for visibility */
-    border: 1px solid var(--secondary-color); /* Subtle borders in a medium grey */
-    padding: 10px; /* Padding for better touch interaction and appearance */
-    border-radius: 5px; /* Rounded corners for a modern look */
-    width: 100%; /* Full width for better control in form layouts */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-    margin-bottom: 15px; /* Space below elements */
+    background-color: var(--header-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--secondary-color); 
+    padding: 10px; 
+    border-radius: 5px; 
+    width: 100%; 
+    box-sizing: border-box; 
+    margin-bottom: 15px; 
 }
 
 .other-projects-inner select {
     width: 20%;
 }
 .other-projects-inner a {
-    color: var(--action-color);
-    margin: 0 10px;
+    background-color: var(--action-color);
+    color: var(--dark-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 50%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.other-projects-inner a:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-text-color);
 }
 .other-projects-inner input:focus, .other-projects-inner select:focus {
     border-color: var(--action-color); /* Brighter blue border on focus for better accessibility */
@@ -289,21 +362,7 @@ h1 {
     
 }
 
-.project {
-    margin-top: 20px;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.project a {
-    color: var(--action-color);
-    margin: 0 10px;
-}
 
 .skills ul {
     list-style: none;
@@ -313,7 +372,7 @@ h1 {
 .skills li {
     display: inline-block;
     margin: 5px;
-    background-color: var(--header-background-color);
+    background-color: var(--text-color);
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -326,7 +385,7 @@ h1 {
 
 #show-phone {
     cursor: pointer;
-    color: var(--action-color);
+    color: var(--accent-color);
 }
 
 #loading-screen {
