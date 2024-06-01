@@ -1,7 +1,7 @@
 .hero h1 {
     margin: 0;
     line-height: 1.25;
-    background: linear-gradient(to right, #a3a3a3, var(--accent-color) 50%, var(--accent-color) 50%, #ffffff);
+    background: linear-gradient(to right, #000000, var(--secondary-color) 50%, var(--secondary-color) 50%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -13,7 +13,7 @@
 }
 
 .hero-inner div {
-    max-width: 58%;
+    max-width: 30rem;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -25,8 +25,7 @@
 }
 
 .hero img {
-    width: 400px;
-    height: 400px;
+    width: 20rem;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid #333;

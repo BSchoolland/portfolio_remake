@@ -19,20 +19,28 @@
     <link rel="icon" href="images/favicon.ico">
     <link rel="preload" href="images/ben.png" as="image">
     <style>
-        body, html {
-          margin: 0;
+        body,
+        html {
+            margin: 0;
         }
+
         canvas {
-          position: absolute;
-          width: 100%;
-          top: 0;
-          left: 0;
-          z-index: -1;
-          pointer-events: none;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
         }
+
         canvas.front {
-        width: 100%;
-          z-index: 0;
+            element {
+                width: 100%;
+                z-index: 0;
+                pointer-events: none;
+                /* allow cursor events to pass through */
+            }
+
         }
     </style>
 </head>
@@ -49,6 +57,9 @@
                 <ul>
                     <li class="selected">Home</li>
                     <li><a href="/all-projects">All Projects</a></li>
+                    <li class="desktop-only"><a href="#about">About</a></li>
+                    <li class="desktop-only"><a href="#skills">Skills</a></li>
+                    <li class="desktop-only"><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-contact">
@@ -62,35 +73,76 @@
         <div class="hero-inner">
             <div>
                 <h1>Benjamin Schoolland</h1>
-                <p>I'm an aspiring software developer with experience in fullstack web development and a strong
+                <p>Aspiring software developer with experience in fullstack web development and a strong
                     foundation
-                    across multiple programming languages and frameworks. I'm intensely focused on creating programming
-                    projects I can be proud of, from robotics to web development.</p>
+                    across multiple programming languages.</p>
+                <button onclick="window.location.href='/all-projects'">View All Projects</button>
             </div>
             <img src="images/ben.png" alt="Professional photo of Benjamin Schoolland">
         </div>
     </section>
 
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-inner">
-            <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
-            <h3>My Journey</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
-            <h3>Looking Ahead</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
+            <div class="inverse-slant">
+                <h1 class="skills-title">About Me</h1>
+                <h3 class="skills-subtitle">I'm an aspiring software developer with experience in fullstack web
+                    development and a strong foundation across multiple programming languages and frameworks. I'm
+                    intensely focused on creating programming projects I can be proud of, from robotics to web
+                    development.</h3>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <div class="skill-top-bar"><img alt="react icon" loading="lazy" width="100" height="100"
+                                decoding="async" data-nimg="1" class="skill-image" style="color:transparent"
+                                srcset="/_next/image?url=%2Fimages%2FReact-icon.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2FReact-icon.png&amp;w=256&amp;q=75 2x"
+                                src="/_next/image?url=%2Fimages%2FReact-icon.png&amp;w=256&amp;q=75">
+                            <h2 class="skill-name">React, Node.js and SQL</h2>
+                        </div>
+                        <h3 class="skill-title">Web Developer</h3>
+                        <p class="skill-description">My experience with web development began in 2022 with the student
+                            led CommunityALI project. As with everything else, I learned by doing, and by now have built
+                            several sites and even a browser game, with a focus on functionality and backend.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-top-bar"><img alt="Robotics icon" loading="lazy" width="100" height="100"
+                                decoding="async" data-nimg="1" class="skill-image" style="color:transparent"
+                                srcset="/_next/image?url=%2Fimages%2FRobotics-icon.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2FRobotics-icon.png&amp;w=256&amp;q=75 2x"
+                                src="/_next/image?url=%2Fimages%2FRobotics-icon.png&amp;w=256&amp;q=75">
+                            <h2 class="skill-name">Robotics and Engineering</h2>
+                        </div>
+                        <h3 class="skill-title">Robotics Club Mentor</h3>
+                        <p class="skill-description">Something I’ve always enjoyed doing is teaching the fundamentals of
+                            coding through robotics. My experience as both a VEX robotics coach and FRC mentor has
+                            allowed by to solidify my own knowledge by passing it on to others.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-top-bar"><img alt="AI icon" loading="lazy" width="100" height="100"
+                                decoding="async" data-nimg="1" class="skill-image" style="color:transparent"
+                                srcset="/_next/image?url=%2Fimages%2FMachine-Learning-icon.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2FMachine-Learning-icon.png&amp;w=256&amp;q=75 2x"
+                                src="/_next/image?url=%2Fimages%2FMachine-Learning-icon.png&amp;w=256&amp;q=75">
+                            <h2 class="skill-name">Machine Learning and AI</h2>
+                        </div>
+                        <h3 class="skill-title">AI Enthusiast</h3>
+                        <p class="skill-description">This is an area I'm actively exploring. I have a lot of experience
+                            prompting models like ChatGPT and utilizing AI tools. I have also begun working on a machine
+                            learning algorithm for sorting lego bricks by color and shape and I hope to have a completed
+                            project or two in this area soon.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-top-bar"><img alt="Python icon" loading="lazy" width="100" height="100"
+                                decoding="async" data-nimg="1" class="skill-image" style="color:transparent"
+                                srcset="/_next/image?url=%2Fimages%2FPython-icon.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2FPython-icon.png&amp;w=256&amp;q=75 2x"
+                                src="/_next/image?url=%2Fimages%2FPython-icon.png&amp;w=256&amp;q=75">
+                            <h2 class="skill-name">Python, LUA, JavaScript…</h2>
+                        </div>
+                        <h3 class="skill-title">Self Taught Programmer</h3>
+                        <p class="skill-description">As far back as I can remember, I have always had a project in the
+                            works. Even at the age of 10, I was building my own games in LUA. Since then, I have
+                            continued to learn and grow, becoming confident in languages like python, Javascript and
+                            C++.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section class="projects">
@@ -101,7 +153,7 @@
             </div>
         </div>
     </section>
-    <section class="skills">
+    <section class="skills" id="skills">
         <div class="skills-inner">
             <h2>Skills</h2>
             <ul>
@@ -135,7 +187,7 @@
             <a href="/all-projects">View All My Projects</a>
         </div>
     </section>
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="contact-inner">
             <h2>Contact Me</h2>
             <p>If you're interested in working with me, feel free to reach out on LinkedIn or text (<i

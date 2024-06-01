@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const STAR_DENSITY = 5 * 10e7;
     const GRAVITATIONAL_CONSTANT = 6.6743e-11;
   
-    const STAR_COUNT = 40;
+    const STAR_COUNT = Math.floor(window.innerWidth / 30);
     const MAX_STAR_RADIUS = 10;
     const MIN_STAR_RADIUS = 1;
     const MAX_STAR_VELOCITY = 1.25;
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const ctx = star.isFront ? ctx2 : ctx1;
         ctx.beginPath();
         ctx.arc(star.x, star.y - top, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "lightblue";
+        ctx.fillStyle = "deepskyblue"
         ctx.fill();
         ctx.closePath();
       });
