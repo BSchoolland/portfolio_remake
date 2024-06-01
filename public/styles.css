@@ -525,7 +525,19 @@ h1 {
     cursor: pointer;
 }
 
+.links-inner a {
+    background-color: var(--action-color);
+    color: var(--dark-text-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
 
+.links-inner a:hover {
+    background-color: var(--secondary-color);
+}
 
 @media (max-width: 768px) {
     body {

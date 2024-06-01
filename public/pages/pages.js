@@ -44,3 +44,23 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("loading-screen").style.display = "none";
         });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu ul');
+    let shown = false;
+    hamburger.addEventListener('click', function() {
+        navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+        shown = !shown;
+    });
+    // if the user clicks anywhere outside the nav menu, close it
+    document.addEventListener('click', function(event) {
+
+        if (!event.target.closest('.hamburger') && shown) {
+            navMenu.style.display = 'none';
+            shown = false;
+        }
+    });
+});
