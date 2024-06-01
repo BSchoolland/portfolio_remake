@@ -2,19 +2,20 @@
 
 /* styles.css */
 :root {
-    --primary-color: #000000; /* Light grey for text */
-    --secondary-color: #0f00e7; /* Medium grey for less emphasized text */
-    --background-color: #fff9f2; /* Dark grey background */
-    --accent-color: #e78300; /* Brighter blue for accents */
-    --text-color: #000000; /* Light grey text */
-    --header-background-color: #ffffff; /* Slightly darker grey for header */
-    /* light mode variables */
-    --dark-primary-color: #000000; /* Dark grey for text */
-    --dark-secondary-color: #ffffff; /* Medium grey for less emphasized text */
-    --dark-background-color: #00093d; /* Light grey background */
-    --dark-accent-color: #b37400; /* Brighter blue for accents */
-    --dark-text-color: #ffffff; /* Medium grey text */
-    --dark-header-background-color: #f0f0f0; /* Light grey for header */
+    --primary-color: #ffffff; 
+    --secondary-color: #0f00e7; 
+    --background-color: #000000; 
+    --action-color: #e78300; 
+    --accent-color: #00b39b;
+    --text-color: #ffffff; 
+    --header-background-color: #ffffff; 
+
+    --dark-primary-color: #000000; 
+    --dark-secondary-color: #ffffff; 
+    --dark-background-color: #00093d;
+    --dark-accent-color: #b37400;
+    --dark-text-color: #000000; 
+    --dark-header-background-color: #f0f0f0; 
 }
 
 body {
@@ -105,8 +106,8 @@ nav ul li a {
 
 .hero button {
     position: relative;
-    background-color: var(--accent-color);
-    color: var(--dark-background-color);
+    background-color: var(--action-color);
+    color: var(--dark-text-color);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -123,7 +124,7 @@ nav ul li a {
 
 .about {
     background-color: white;
-    background: linear-gradient(to bottom left ,  var(--dark-background-color), #000000 50%, var(--dark-background-color) 100%);
+    background: linear-gradient(to bottom left ,  var(--dark-background-color), #00030c 50%, var(--dark-background-color) 100%);
     transform: skewY(-2deg);
     padding: 20px;
     padding-top: 60px;
@@ -135,6 +136,60 @@ nav ul li a {
     transform: skewY(2deg);
     margin: auto;
     max-width: 800px;
+}
+
+.about h1 {
+    font-size: 3rem;
+    margin-bottom: -10px;
+}
+.about h3 {
+    color: var(--text-color);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+
+/* Adjust the grid when the viewport is 600px or less */
+@media screen and (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+.about-grid div {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    /* invisible until javascript enables it */
+    opacity: 0;
+    transition: background-color 1s ease;
+
+}
+
+
+@keyframes flipIn {
+    0% { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+    100% { transform: perspective(600px) rotateY(0deg); opacity: 1; }
+}
+
+.about-grid h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.about-grid p {
+    margin: 10px 0;
+    color: #666;
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .skills, .other-projects, .contact {
@@ -162,7 +217,7 @@ nav ul li a {
     z-index: -1;
 }
 
-.projects, .intro, .content .links {
+.intro, .content .links {
     padding: 20px;
     margin-top: 20px;
 }
@@ -172,13 +227,21 @@ nav ul li a {
     max-width: 800px;
 }
 
+.projects {
+    background-color: #000000;
+    padding-top: 100px;
+    margin-top: -100px;
+    padding-bottom: 150px;
+    margin-bottom: -150px;
+}
+
 .links-inner {
     display: flex;
     justify-content: center;
 }
 
 .links-inner a {
-    color: var(--accent-color);
+    color: var(--action-color);
     margin: 0 10px;
     font-size: 20px;
 }
@@ -203,11 +266,11 @@ nav ul li a {
     width: 20%;
 }
 .other-projects-inner a {
-    color: var(--accent-color);
+    color: var(--action-color);
     margin: 0 10px;
 }
 .other-projects-inner input:focus, .other-projects-inner select:focus {
-    border-color: var(--accent-color); /* Brighter blue border on focus for better accessibility */
+    border-color: var(--action-color); /* Brighter blue border on focus for better accessibility */
     outline: none; /* Removes the default focus outline */
     box-shadow: 0 0 3px rgba(76, 138, 255, 0.5); /* Soft glow effect for focus */
 }
@@ -219,15 +282,24 @@ h1, h2, h3 {
     color: var(--accent-color);
 }
 
+h1 {
+    font-size: 2.5rem;
+    
+}
+
 .project {
     margin-top: 20px;
-    background-color: var(--header-background-color);
+    background-color: var(--dark-background-color);
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .project a {
-    color: var(--accent-color);
+    color: var(--action-color);
     margin: 0 10px;
 }
 
@@ -246,13 +318,13 @@ h1, h2, h3 {
 }
 
 .skills li:hover {
-    background-color: var(--accent-color);
+    background-color: var(--action-color);
     color: var(--background-color);
 }
 
 #show-phone {
     cursor: pointer;
-    color: var(--accent-color);
+    color: var(--action-color);
 }
 
 #loading-screen {
@@ -281,6 +353,7 @@ h1, h2, h3 {
         display: flex;
         flex-direction: column;
     }
+
 
     nav ul li {
         display: block;
