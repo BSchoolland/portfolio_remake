@@ -130,6 +130,7 @@ nav ul li a {
     padding-top: 60px;
     padding-bottom: 60px;
     color: var(--dark-text-color);
+    margin-bottom: -200px;
 }
 
 .about-inner {
@@ -192,7 +193,15 @@ nav ul li a {
     }
 }
 
-.skills, .other-projects, .contact {
+.skills {
+    transform: skewY(2deg);
+    background-color: var(--dark-background-color);
+    padding: 20px;
+    margin-top: -200px;
+    color: var(--dark-text-color);
+}
+
+.other-projects, .contact {
     transform: skewY(2deg);
     background-color: var(--dark-background-color);
     padding: 20px;
@@ -204,10 +213,6 @@ nav ul li a {
     transform: skewY(-2deg);
     margin: auto;
     max-width: 800px;
-}
-
-.skills {
-    margin-top: 100px;
 }
 
 .contact {
@@ -228,11 +233,8 @@ nav ul li a {
 }
 
 .projects {
-    background-color: #000000;
-    padding-top: 100px;
-    margin-top: -100px;
-    padding-bottom: 150px;
-    margin-bottom: -150px;
+    padding-top: 200px;
+    padding-bottom: 200px;
 }
 
 .links-inner {
@@ -289,7 +291,7 @@ h1 {
 
 .project {
     margin-top: 20px;
-    background-color: var(--dark-background-color);
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
