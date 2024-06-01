@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       star1.y = largerStar.y;
   
       if (star1.radius >= MAX_STAR_RADIUS) {
-        star1.radius = bigStar ? 15 : MAX_STAR_RADIUS;
+        star1.radius = MAX_STAR_RADIUS;
       }
   
       if (star1.radius >= MAX_STAR_RADIUS / 2) {
@@ -273,15 +273,15 @@ document.addEventListener("DOMContentLoaded", () => {
   
       canvas1.style.top = `${top}px`;
       canvas2.style.top = `${top}px`;
-  
+      
       if (top > 0 && bigStar) {
+        bigStar.isBigStar = false;
         const interval = setInterval(() => {
-          if (bigStar && bigStar.radius > 1) {
+          if (bigStar && bigStar.radius > 10) {
             bigStar.radius -= 0.1;
           } else {
             // delete bigStar;
             if (bigStar) {
-              bigStar.radius = 0;
               bigStar = null;
             }            
             clearInterval(interval);
