@@ -50,11 +50,7 @@ nav ul {
     padding: 0;
 }
 
-nav .selected {
-    font-weight: bold;
-    text-decoration: underline;
-    cursor: pointer;
-}
+
 
 nav ul li {
     display: inline;
@@ -461,6 +457,72 @@ h1 {
         grid-template-columns: repeat(1, 1fr);
         
     }
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    color: var(--text-color);
+    border: none;
+}
+/* General styles that apply to all screen sizes */
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Change to flex for desktop */
+    position: relative; /* Changed from absolute for desktop */
+    width: auto; /* Adapt to content size */
+}
+
+.nav-menu ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 950px) {
+    .hamburger {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: var(--text-color);
+    }
+
+    .header-contact{
+        font-size: 0.75rem;
+    }
+
+    .nav-menu ul {
+        background-color: var(--background-color); 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        width: 100%;
+        top: 60px; 
+        left: 0;
+        z-index: 1000;
+    }
+
+    .desktop-only {
+        display: none; 
+    }
+}
+
+/* Styles to show the menu when hamburger is clicked, handled by JS */
+.nav-menu.show {
+    display: flex; /* Display as flex when active */
+}
+
+.selected {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 
