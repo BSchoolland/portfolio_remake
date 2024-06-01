@@ -64,8 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
       star1.x = largerStar.x;
       star1.y = largerStar.y;
   
-      if (star1.radius >= MAX_STAR_RADIUS) {
+      if (!star1.isBigStar && star1.radius >= MAX_STAR_RADIUS) {
         star1.radius = MAX_STAR_RADIUS;
+      } else if (star1.isBigStar) {
+        star1.radius = 15;
       }
   
       if (star1.radius >= MAX_STAR_RADIUS / 2) {
