@@ -248,6 +248,10 @@ nav ul li a {
     font-size: 2rem;
 }
 
+.all-projects h3 {
+    font-size: 1.5rem;
+}
+
 .projects-inner {
     margin: auto;
     padding-left: 5rem;
@@ -272,7 +276,7 @@ nav ul li a {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     @media screen and (max-width: 768px){
         padding: 10px 2rem;
@@ -416,6 +420,11 @@ h1 {
     margin-bottom: 50px;
 }
 
+.filter-inner {
+    padding: 10px;
+}
+
+
 .filter-inner input, .filter-inner select {
     background-color: var(--header-background-color);
     color: var(--dark-text-color);
@@ -453,7 +462,10 @@ h1 {
 }
 
 .all-projects {
-    margin: 50px;
+    margin: 3rem;
+    @media screen and (max-width: 768px){
+        margin: 0;
+    }
 }
 
 .all-projects-inner {
@@ -552,7 +564,7 @@ h1 {
         font-size: 18px; /* Increases the base font size for better readability */
     }
 
-    .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner {
+    .header-inner, .hero-inner, .about-inner, .projects-inner, .skills-inner, .other-projects-inner, .contact-inner, .intro-inner, .content-inner, .links-inner, .filter-inner{
         padding: 20px; /* Increased padding for better spacing */
     }
 
