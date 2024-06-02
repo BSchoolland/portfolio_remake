@@ -6,7 +6,7 @@ This is a portfolio website designed to showcase my projects. The site is built 
 ## Installation
 1. Clone the repository:
 ```
-git clone <repository_url>
+git clone https://github.com/BSchoolland/portfolio_remake.git
 ```
 2. Navigate into the project directory:
 ```
