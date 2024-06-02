@@ -229,6 +229,11 @@ nav ul li a {
     z-index: -1;
 }
 
+.contact a {
+    color: var(--accent-color);
+
+}
+
 .intro, .content .links {
     padding: 20px;
     margin-top: 20px;
