@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const server = https.createServer(app); // Ensure your server also supports HTTPS if needed
+require('dotenv').config();
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -17,7 +18,7 @@ app.get('/all-projects', (req, res) => {
 });
 
 const hostname = '0.0.0.0'; 
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable for port or default to 3000
 
 // Function to ping Heroku app
 function pingHerokuApp() {
