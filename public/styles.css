@@ -4,7 +4,7 @@
 :root {
     --primary-color: #ffffff; 
     --secondary-color: #0f00e7; 
-    --background-color: #000000; 
+    --background-color: #03000a; 
     --action-color: #e78300; 
     --accent-color: #00b39b;
     --text-color: #ffffff; 
@@ -414,7 +414,7 @@ h1 {
 }
 
 .filter {
-    transform: skewY(-2deg);
+    /* transform: skewY(-2deg); */
     margin: auto;
     max-width: 800px;
     margin-bottom: 50px;

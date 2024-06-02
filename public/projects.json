@@ -15,7 +15,7 @@
         "id": 1,
         "projectName": "Lego Sorter",
         "for": "Personal Project",
-        "summary": "Automated lego sorter that uses an Arduino to sort legos by color.",
+        "summary": "Automated Lego sorter that uses an Arduino to sort Legos by color.",
         "skills": ["Python", "Arduino", "CAD"],
         "date": "2024-03-15",
         "image": "images/legosorter.png",
