@@ -1,7 +1,7 @@
 .hero h1 {
     margin: 0;
     line-height: 1.25;
-    background: linear-gradient(to right, #000000, var(--secondary-color)) no-repeat;
+    background: linear-gradient(to right, #006e69, var(--accent-color)) no-repeat;
     background-size: 200% 100%;
     background-position: 100% 0;
     -webkit-background-clip: text;
@@ -21,7 +21,7 @@
 
 @keyframes gradient {
     0% { background-position: -200% 0; }
-    100% { background-position: 70% 0; }
+    100% { background-position: 90% 0; }
 }
 
 .hero-inner div {
@@ -46,6 +46,6 @@
     border: 5px solid #333;
     padding: 10px;
     @media screen and (max-width: 768px) {
-        display: none;
+        width: 15rem;
     }
 }

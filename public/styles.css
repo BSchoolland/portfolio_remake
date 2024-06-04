@@ -14,7 +14,7 @@
     --dark-secondary-color: #ffffff; 
     --dark-background-color: #00093d;
     --dark-action-color: #00008f;
-    --dark-accent-color: #b37400;
+    --dark-accent-color: #a34100;
     --dark-text-color: #000000; 
     --dark-header-background-color: #f0f0f0; 
 }
@@ -93,7 +93,14 @@ nav ul li a {
     /* background-color: var(--dark-background-color); */
     color: var(--text-color);
     z-index: 1;
-    min-height: 90vh;
+    
+    /* min-height: 90vh; */
+    margin-bottom: 15rem;
+    @media screen and (max-width: 768px){
+        margin-bottom: 3rem;
+        margin-top: 0;
+        
+    }
 }
 
 .hero-inner {
@@ -118,11 +125,26 @@ nav ul li a {
     margin-top: 20px;
     width: 50%;
     cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out; /* Add transition property */
 }
 
 .hero button:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-text-color);
+    transform: scale(1.1); /* Use transform property to scale */
+}
+
+@media screen and (max-width: 768px) {
+    .hero-inner {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero button {
+        width: 50%;
+        margin: 20px auto;
+    }
 }
 
 .about {
@@ -345,21 +367,21 @@ nav ul li a {
 .other-projects-inner select {
     width: 20%;
 }
-.other-projects-inner a {
+.other-projects-inner button {
     background-color: var(--action-color);
     color: var(--dark-text-color);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     margin-top: 20px;
-    width: 50%;
+    width: 10rem;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.3s ease-in-out; /* Add transition property */
 }
 
-.other-projects-inner a:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-text-color);
+.other-projects-inner button:hover {
+    transform: scale(1.1);
 }
 .other-projects-inner input:focus, .other-projects-inner select:focus {
     border-color: var(--action-color); /* Brighter blue border on focus for better accessibility */
