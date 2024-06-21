@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Natural Language Database</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <button class="hamburger" aria-label="Open navigation menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>Project: Natural Language Database</h2>
+            <p>I've been having a great time building with AI recently; it really expands the scope of projects that are feasible for someone with limited time and resources! One project suggested to me was a system for querying databases with natural language. It was a fantastic suggestion, and I was honestly surprised by how simple, effective, and powerful the tool ended up being after just 2-3 hours of development.</p>
+            <h3>Tech Stack:</h3>
+            <p>The project was made in Python and uses Tkinter for the UI. In keeping with the AI focus, I had ChatGPT write a good chunk of the code as well. The database is a simple SQLite database, and the natural language processing is done through the OpenAI API.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>The AI seamlessly translates requests into SQL queries and then back to human language.</li>
+                <li> The AI is familiarized with the selected dataset before the conversation, meaning it won't try to query nonexistent tables and understands the structure of the data from the beginning.</li>
+                <li>Fast response times (from 3-5 seconds for the AI to query the data and explain the results).</li>
+                <li>The model automatically fixes its own mistakes if the SQL query fails, learning from any error messages.</li>
+
+            </ul>
+            <h3>Conclusion:</h3>
+            <p>This project was a ton of fun to make, and I now understand the power of integrating LLMs with tools behind the scenes. If you want to see my code or try the project yourself, feel free to take a look at the GitHub repository!</p>
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+            <a href="https://www.flaticon.com/free-icons/developer" style="color: white" title="developer icons">Icons created by Pixel perfect - Flaticon</a>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img); // Add the image to the DOM
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.live) {
+                            links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+
+</body>
+</html>

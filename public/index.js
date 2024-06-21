@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         .then((response) => response.json())
         .then((projects) => {
             const projectList = document.getElementById("projects-container");
-            // only use the first 3 projects as these are the ones that will be displayed
-            projects.slice(0, 3).forEach((project) => {
+            // only use the first 4 projects as these are the ones that will be displayed
+            projects.slice(0, 4).forEach((project) => {
                 const projectDiv = document.createElement("div");
                 projectDiv.className = "project";
                 let linksHtml = "<div class='links'>";

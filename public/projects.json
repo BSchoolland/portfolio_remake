@@ -24,6 +24,18 @@
         "page": "/pages/lego-sorter.html"
     },
     {
+        "id": 12,
+        "projectName": "AI Terminal Assistant",
+        "for": "Personal Project",
+        "summary": "A program that connects ChatGPT to the Linux terminal, allowing it to manage files and run commands.",
+        "skills": ["Python", "AI"],
+        "date": "2024-06-20",
+        "image": "images/aiterminal.png",
+        "github": "https://github.com/BSchoolland/terminal_assistant",
+        "live": "",
+        "page": "/pages/ai-terminal.html"
+    },
+    {
         "id": 2,
         "projectName": "CommunityALI",
         "for": "Group Project",
@@ -142,5 +154,17 @@
         "github": "https://github.com/BSchoolland/portfolio_remake",
         "live": "https://bschoolland.com/",
         "page": "/pages/portfolio.html"
+    },
+    {
+        "id": 13,
+        "projectName": "Natural Language Database",
+        "for": "Personal Project",
+        "summary": "A database that utilizes an AI model to automatically generate SQL queries based on natural language input.",
+        "skills": ["Python", "AI", "SQL"],
+        "date": "2024-06-10",
+        "image": "images/nldb.png",
+        "github": "https://github.com/BSchoolland/natural-language-database",
+        "live": "",
+        "page": "/pages/natural-language-database.html"
     }
 ]
