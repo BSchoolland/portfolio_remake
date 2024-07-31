@@ -11,7 +11,7 @@ function getQueryVariable(variable) {
 }
 
 const herokuAppUrl = getQueryVariable('projectUrl');
-const checkInterval = 5000; // Check every 5 seconds
+const checkInterval = 1000; // Check every 5 seconds
 const timeout = 60000; // 60 seconds timeout
 
 let elapsedTime = 0;
@@ -23,19 +23,8 @@ function checkHerokuApp() {
             window.location.href = herokuAppUrl; // Redirect to the Heroku app
         })
         .catch(error => {
-            // Check if the error is a CORS error indicating the server is up
-            if (error.message.includes('Failed to fetch')) {
-                // Assume CORS error means server is awake, redirect.
-                window.location.href = herokuAppUrl;
-            } else if (elapsedTime < timeout) {
-                // If not a CORS error and time is left, keep checking.
-                setTimeout(checkHerokuApp, checkInterval);
-                elapsedTime += checkInterval;
-                updateLoadingMessage(elapsedTime);
-            } else {
-                // If timeout, display an error message.
-                displayErrorMessage();
-            }
+            // If there's an error, we assume that the server must have sent that error, meaning it may not allow CORS but it is up.
+            window.location.href = herokuAppUrl;
         });
 }
 
