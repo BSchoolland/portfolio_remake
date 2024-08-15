@@ -28,7 +28,7 @@
         "projectName": "AI Terminal Assistant",
         "for": "Personal Project",
         "summary": "A program that connects ChatGPT to the Linux terminal, allowing it to manage files and run commands.",
-        "skills": ["Python", "AI"],
+        "skills": ["Python", "AI", "linux"],
         "date": "2024-06-20",
         "image": "images/aiterminal.png",
         "github": "https://github.com/BSchoolland/terminal_assistant",
@@ -166,5 +166,29 @@
         "github": "https://github.com/BSchoolland/natural-language-database",
         "live": "",
         "page": "/pages/natural-language-database.html"
+    },
+    {
+        "id": 14,
+        "projectName": "Visions to Visuals Portfolio",
+        "for": "Work Project",
+        "summary": "A portfolio site for my startup, Visions to Visuals, that showcases our work and services.",
+        "skills": ["Next.js", "React", "Apache", "Linux"],
+        "date": "2024-05-30",
+        "image": "images/v2v.png",
+        "github": "https://github.com/Visions-to-Visuals/portfolio",
+        "live": "https://visionstovisuals.com/",
+        "page": "/pages/visions-to-visuals.html"
+    },
+    {
+        "id": 15,
+        "projectName": "Debian 12 Virtual Machine",
+        "for": "Personal Project",
+        "summary": "A virtual machine running Debian 12 that I used to learn more about Linux and server management.",
+        "skills": ["Linux", "Apache", "Bash"],
+        "date": "2024-04-20",
+        "image": "images/debian12.png",
+        "github": "",
+        "live": "https://bschoolland.github.io/virtual-deb-12-demo/",
+        "page": "/pages/debian-12.html"
     }
 ]
