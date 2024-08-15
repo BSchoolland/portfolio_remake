@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: [project name]</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <button class="hamburger" aria-label="Open navigation menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <!-- for project specific content-->
+            <iframe src="https://www.crazygames.com/embed/sketchy-towers" style="width: 922px; height: 487px;" frameborder="0" allow="gamepad *;"></iframe>
+            <div>
+                <h2>🕹️ Recently (at least at the time of writing), I had the opportunity to participate in a game jam! 🟦</h2>
+              
+                <p>
+                  This was my first game jam, so I thought I’d share the experience. First, what exactly is a game jam? Basically, it’s an online event where a bunch of game developers come together and compete to create games that conform to a set of requirements, revealed at the start of the event, in a very limited timeframe.
+                </p>
+              
+                <p>
+                  The jam I participated in lasted for 72 hours, which was all the time I was allotted to come up with a game idea, create art and music, build out the game, and share it with the other members of the event. The requirement revealed at the beginning of the jam was that all games be focused on shapes and patterns. Let's just say that the weekend included a fair bit of adrenaline, caffeine, and was some of the most fun I’ve had in quite some time.
+                </p>
+              
+                <h3>Results:</h3>
+                <p>
+                  Most importantly, I gained a lot of experience with the Godot game engine, which I want to use to make larger projects in the future. I also think I made a decent game—it was ranked 8th overall out of 29 submissions and took 1st place in the Gameplay category! I believe this game is worth more than 3 days of my time, so I’ve been making improvements over the past week and have plans to try to monetize it in the near future!
+                </p>
+              
+                <h3>Key Takeaways:</h3>
+                <ul>
+                  <li>🟦 <strong>Manageable goals:</strong> A lesson I seem to need to learn over and over again is to pick manageable goals. My natural instinct is to always do more than the minimum, which I really had to fight during this jam due to the hard deadline.</li>
+                  <li>🟢 <strong>Technical skills:</strong> Another reason I did this game jam was to get better at Godot, a game engine I’m interested in using as I explore the possibilities in the world of independent game development.</li>
+                  <li>🟥 <strong>Value of game jams:</strong> In my opinion, participating in this game jam was a great way to gauge my abilities as a new developer as well as gain significant experience without needing to spend months building a complex game. I’ll be doing more of these in the future!</li>
+                </ul>
+                <h2>🎮 After the Jam</h2>
+                <p>
+                  After the jam, I spent a few days polishing the game and adding some features I didn’t have time to implement earlier, after which I released it on CrazyGames, where it has already been played by 1000s of people! 
+                </p>
+              </div>
+                <p>You can see all the games from the jam <strong><em><a href="https://itch.io/jam/icojam-2024/results/gameplay" target="_blank">here</a></em></strong>!</p>
+              <p>I may have linked to the gameplay category specifically so you'd see my game on top :) </p>
+              
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+            <a href="https://www.flaticon.com/free-icons/developer" style="color: white" title="developer icons">Icons created by Pixel perfect - Flaticon</a>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+
+
+                
+                    intro.innerHTML = `
+                        <h1>${project.projectName}</h1>
+                        <p>${project.summary}</p>
+                        <div style="display: flex; justify-content: center;">
+                    `;
+                    
+
+                    if (project.github) {
+                        links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                    }
+                    if (project.live) {
+                        links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                    }
+
+                    // Hide the loading screen
+                    document.getElementById('loading-screen').style.display = 'none';
+                    
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+
+</body>
+</html>

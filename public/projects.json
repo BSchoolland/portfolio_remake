@@ -190,5 +190,17 @@
         "github": "",
         "live": "https://bschoolland.github.io/virtual-deb-12-demo/",
         "page": "/pages/debian-12.html"
+    },
+    {
+        "id": 16,
+        "projectName": "Sketchy Towers",
+        "for": "Personal Project",
+        "summary": "A Tetris-inspired game I built in 72 hours for a game jam. It features physics based block stacking, and a unique art style.",
+        "skills": ["Godot", "Node.js", "SQL"],
+        "date": "2024-07-26",
+        "image": "images/sketchytowers.png",
+        "github": "https://github.com/BSchoolland/game-jam-07-26-24",
+        "live": "https://www.crazygames.com/game/sketchy-towers",
+        "page": "/pages/sketchy-towers.html"
     }
 ]
