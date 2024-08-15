@@ -33,7 +33,34 @@ document.addEventListener("DOMContentLoaded", async function () {
                     `;
                 projectList.appendChild(projectDiv);
             });
+
+            // Populating the skills section with all the skills from the projects
+            const allSkills = projects.flatMap((project) => project.skills);
+            const skillFrequency = allSkills.reduce((acc, skill) => {
+                acc[skill] = (acc[skill] || 0) + 1;
+                return acc;
+            }, {});
+
+            const x = 2; // minimum number of projects a skill must appear in to be considered frequent
+            const frequentSkills = Object.keys(skillFrequency).filter(skill => skillFrequency[skill] >= x);
+
+            const skillsContainer = document.getElementById("skills-container");
+
+            // each skill will create an object like this:
+            // <li onclick="window.location.href='/all-projects?filter=HTML'"><a
+            //                 href="/all-projects?filter=HTML">HTML</a></li>
+            frequentSkills.forEach((skill) => {
+                const skillElement = document.createElement("li");
+                skillElement.innerHTML = `<a href="/all-projects?filter=${skill}">${skill}</a>`;
+                skillsContainer.appendChild(skillElement);
+            }
+            );
+            
         });
+        
+            
+                
+                    
 });
 
 document.addEventListener('DOMContentLoaded', function() {

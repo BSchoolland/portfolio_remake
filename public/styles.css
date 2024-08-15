@@ -347,6 +347,9 @@ nav ul li a {
     margin: 0 10px;
     font-size: 20px;
 }
+.skills-inner p {
+    color: var(--text-color);
+}
 
 .skills-inner a {
     color: var(--dark-text-color);

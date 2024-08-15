@@ -28,7 +28,7 @@
         "projectName": "AI Terminal Assistant",
         "for": "Personal Project",
         "summary": "A program that connects ChatGPT to the Linux terminal, allowing it to manage files and run commands.",
-        "skills": ["Python", "AI", "linux"],
+        "skills": ["Python", "AI", "Linux"],
         "date": "2024-06-20",
         "image": "images/aiterminal.png",
         "github": "https://github.com/BSchoolland/terminal_assistant",
