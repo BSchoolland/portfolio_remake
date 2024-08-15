@@ -13,6 +13,18 @@
     },
     {
         "id": 1,
+        "projectName": "Visions to Visuals Portfolio",
+        "for": "Work Project",
+        "summary": "A portfolio site for my startup, Visions to Visuals, that showcases our work and services.",
+        "skills": ["Next.js", "React", "Apache"],
+        "date": "2024-05-30",
+        "image": "images/v2v.png",
+        "github": "https://github.com/Visions-to-Visuals/portfolio",
+        "live": "https://visionstovisuals.com/",
+        "page": "/pages/visions-to-visuals.html"
+    },
+    {
+        "id": 2,
         "projectName": "Lego Sorter",
         "for": "Personal Project",
         "summary": "Automated Lego sorter that uses an Arduino to sort Legos by color.",
@@ -36,7 +48,7 @@
         "page": "/pages/ai-terminal.html"
     },
     {
-        "id": 2,
+        "id": 14,
         "projectName": "CommunityALI",
         "for": "Group Project",
         "summary": "A student led project to help students at MJC find opportunities to get involved in clubs and organizations.",
@@ -47,6 +59,7 @@
         "live": "https://www.communityali.org/",
         "page": "/pages/communityali.html"
     },
+
     {
         "id": 3,
         "projectName": "Translator App",
@@ -166,18 +179,6 @@
         "github": "https://github.com/BSchoolland/natural-language-database",
         "live": "",
         "page": "/pages/natural-language-database.html"
-    },
-    {
-        "id": 14,
-        "projectName": "Visions to Visuals Portfolio",
-        "for": "Work Project",
-        "summary": "A portfolio site for my startup, Visions to Visuals, that showcases our work and services.",
-        "skills": ["Next.js", "React", "Apache", "Linux"],
-        "date": "2024-05-30",
-        "image": "images/v2v.png",
-        "github": "https://github.com/Visions-to-Visuals/portfolio",
-        "live": "https://visionstovisuals.com/",
-        "page": "/pages/visions-to-visuals.html"
     },
     {
         "id": 15,
