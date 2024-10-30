@@ -29,9 +29,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                     links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
                 }
                 if (project.live) {
-                    links.innerHTML += `<a href="/loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                    if (!project.skipLoading) {
+                        links.innerHTML += `<a href="/loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;   
+                    }
+                    else {
+                        links.innerHTML += `<a href="${project.live}" target="_blank">Live Site</a>`;
+                    }
                 }
-
                 // Hide the loading screen
                 document.getElementById("loading-screen").style.display =
                     "none";

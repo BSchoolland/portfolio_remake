@@ -42,15 +42,30 @@
              </p>
             <h3>How it Works:</h3>
             <p>
-                The project is built in Python and uses the OpenAI API to interact with either the gpt-3.5-turbo or gpt-4o model, depending on the complexity of the task. The user starts a conversation with the AI by typing a prompt into the terminal. The model can then choose to respond to the user, or run a command or series of commands in the terminal.  After each command, the output is fed back into the model, until it decides that it has achieved the desired result.  
+                The project is built in Python and uses the OpenAI API to interact with their gpt-4o model, or any other OpenAI model the user decides to pass in. The user starts a conversation with the AI by typing a prompt into the terminal. The model can then choose to respond to the user, or run a command or series of commands in the terminal.  After each command, the output is fed back into the model, until it decides that it has achieved the desired result.  
             </p>
+            <h3 id="safety-features">Safety Features</h2>
+                <p>When you first set up this package, you&#39;ll be prompted to set a default risk tolerance level from 0 to 6.  Any command deemed by a secondary agent to be above this risk tolerance level will require user confirmation before being run.  If you wish to read every command before it is run, you can set the risk tolerance level to 0.  Setting a higher value will allow the assistant to run more commands without user confirmation.  I&#39;ve also found that OpenAI&#39;s models are naturally quite cautious with the commands they generate, and will refuse to run dangerous commands even if explicitly asked to do so.</p>
+                <h4 id="how-risk-tolerance-works">How risk tolerance works</h3>
+                <p>All commands are sent to gpt-4o-mini, a cheap but capable model, where it classifies the command without context to avoid bias. The model classifies commands based on the following scale:</p>
+                <p>1 - Read Only: Commands that simply read data without modifying anything at all
+                Example: ls -l - Lists files in a directory, changing nothing</p>
+                <p>2 - Safe: Commands that can write data but can not do any accidental damage
+                Example: touch myfile.txt - creates a file if it does not exist, but will not overwrite existing files</p>
+                <p>3 - Low Risk: Commands that alter files or locations, risky as it causes a change to the system.
+                Example: echo &quot;text&quot; &gt;&gt; myfile.txt - adds some data to the file</p>
+                <p>4 - High Risk: Commands that can modify data or cause other problems, leading to some data loss or serious inconvenience if used wrongly.
+                Example: rm myfile.txt - Deletes a file, leading to data loss if the wrong file is targeted</p>
+                <p>5 - Critical Risk (Accident-Prone): Commands that can cause severe damage or data loss if accidentally misused, often with no recovery option.
+                Example: rm -rf /Projects - Deletes all files in a likely important directory, leading to data loss.</p>
             <h3>Demo Video:</h3>
             <p>Here's a quick demo of the system in action!</p>
             <div style="position: relative; width: 100%; padding-top: 56.25%;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/A91d4Qqg4GI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/TpNH_hdyuOo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <h3>Key Learnings:</h3>
              <ul>
+                <li><b>PyPI Package Creation:</b>  This was my first time creating a PyPI package, and I learned a lot about the process, and how to create a product that is simple and easy to use for others.</li>
                 <li><b>Prompt Engineering:</b>  I improved my ability to create prompts that allow models to perform better. Something I learned is that a smaller model with a great prompt almost always performs better than a larger model with a bad prompt.</li>
                 <li><b>Automation:</b>  To get an AI connected to my terminal, I first had to create a program that could interact with a terminal and react to outputs. This taught me a lot about automation, and the code could easily be reused in future projects.
                 </li>
@@ -104,7 +119,7 @@
                             links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
                         }
                         if (project.live) {
-                            links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                            links.innerHTML += `<a href="${project.live}" target="_blank">PyPI package</a>`;
                         }
 
                         // Hide the loading screen
