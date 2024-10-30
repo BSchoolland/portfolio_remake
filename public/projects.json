@@ -37,7 +37,7 @@
     },
     {
         "id": 12,
-        "projectName": "AI powered Terminal",
+        "projectName": "AI Powered Terminal",
         "for": "Personal Project",
         "summary": "A python package that connects ChatGPT to the terminal on any operating system, allowing AI to manage files, run commands, develop software, and anything else you can ask it to do.",
         "skills": ["Python", "AI", "Linux", "PyPI"],
