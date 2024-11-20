@@ -99,14 +99,15 @@
             <h3>Hi, I'm Ben. Here's a bit about me:</h3>
             <div class="about-grid">
 
-                <div>
+                <div class="larger-about-box">
                     <h2>Experience</h2>
-                    <p><b>Programming intern</b> at Bay Valley Tech: 04/2024 - Present</p>
+                    <p><b>Co-Founder and Lead Developer</b> at Visions to Visuals</a>: 02/2024 - Present</p>
                     <p><b>Web development intern</b> at Digital NEST: 12/2023 - Present</p>
-                    <p><b>Lego Robotics Instructor</b> at the Modesto Academy of Music and Design: 8/2021 - 4/2024 </p>
+                    <p><b>Programming intern</b> at Bay Valley Tech: 04/2024 - 08/2024</p>
+                    <p><b>Lego Robotics Instructor</b> at the Modesto Academy of Music and Design: 8/2021 - 04/2024 </p>
 
                 </div>
-                <div>
+                <div class="smaller-about-box">
                     <h2>Interests</h2>
                     <p><b>I live to make stuff.</b> My interests are ever changing, but they always revolve around some
                         side project, from designing my own board game to building an AI tool.
@@ -122,37 +123,54 @@
                     <p>The most important thing to me is not how successful I become or how much fun I can have, but
                         what kind of positive <b>impact</b> I can have on people and the world around me. I believe that
                         true fulfillment comes from what I can give, not what I can receive. </p>
-                    <script>
-                        // Select the elements
-                        var cards = document.querySelectorAll('.about-grid div');
-                        cards.forEach(function (card) {
-                            var hue;
-                            do {
-                                hue = Math.random() * 360;
-                            } while (hue >= 260 && hue <= 290);
-                            card.style.backgroundColor = 'hsl(' + hue + ', 50%, ' + (Math.random() * 10 + 80) + '%)';
-                        });
-
-                        // Define the Intersection Observer
-                        var observer = new IntersectionObserver(function (entries) {
-                            entries.forEach(function (entry) {
-                                // If the element is in view
-                                if (entry.isIntersecting) {
-                                    // Loop through the elements
-                                    for (var i = 0; i < cards.length; i++) {
-                                        // Add the animation to the element with a delay
-                                        cards[i].style.animation = 'flipIn 1s ease forwards ' + i * 0.2 + 's';
-
-                                    }
-                                    // Disconnect the observer after the animations have been added
-                                    observer.disconnect();
-                                }
+                        <script>
+                            // Select the elements
+                            var cards = document.querySelectorAll('.about-grid div');
+                        
+                            // Function to generate a random hue excluding 260-290 range
+                            function generateHue() {
+                                var hue;
+                                do {
+                                    hue = Math.random() * 360;
+                                } while (hue >= 260 && hue <= 290);
+                                return hue;
+                            }
+                        
+                            // Set initial random colors
+                            cards.forEach(function (card) {
+                                var hue = generateHue();
+                                card.style.backgroundColor = 'hsl(' + hue + ', 50%, ' + (Math.random() * 10 + 80) + '%)';
                             });
-                        }, { threshold: 0.1 }); // Trigger when 10% of the element is in view
-
-                        // Observe the first card
-                        observer.observe(cards[0]);
-                    </script>
+                        
+                            // Change color of a random card every 5 seconds
+                            setInterval(function () {
+                                // Select a random card
+                                var randomCard = cards[Math.floor(Math.random() * cards.length)];
+                                // Generate a new random color
+                                var newHue = generateHue();
+                                randomCard.style.backgroundColor = 'hsl(' + newHue + ', 50%, ' + (Math.random() * 10 + 80) + '%)';
+                            }, 5000);
+                        
+                            // Define the Intersection Observer
+                            var observer = new IntersectionObserver(function (entries) {
+                                entries.forEach(function (entry) {
+                                    // If the element is in view
+                                    if (entry.isIntersecting) {
+                                        // Loop through the elements
+                                        for (var i = 0; i < cards.length; i++) {
+                                            // Add the animation to the element with a delay
+                                            cards[i].style.animation = 'flipIn 1s ease forwards ' + i * 0.2 + 's';
+                                        }
+                                        // Disconnect the observer after the animations have been added
+                                        observer.disconnect();
+                                    }
+                                });
+                            }, { threshold: 0.1 }); // Trigger when 10% of the element is in view
+                        
+                            // Observe the first card
+                            observer.observe(cards[0]);
+                        </script>
+                        
                 </div>
             </div>
     </section>

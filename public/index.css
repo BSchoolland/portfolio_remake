@@ -49,3 +49,20 @@
         width: 15rem;
     }
 }
+
+.larger-about-box {
+    width: 120%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.smaller-about-box {
+    width: 60%;
+    justify-self: end;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
