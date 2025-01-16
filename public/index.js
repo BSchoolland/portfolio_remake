@@ -38,6 +38,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                 projectList.appendChild(projectDiv);
             });
 
+            // After projects are loaded, check for hash and scroll if needed
+            if (window.location.hash) {
+                const element = document.querySelector(window.location.hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
             // Populating the skills section with all the skills from the projects
             const allSkills = projects.flatMap((project) => project.skills);
             const skillFrequency = allSkills.reduce((acc, skill) => {
