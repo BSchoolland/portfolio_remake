@@ -54,7 +54,7 @@
     width: 120%;
 
     @media screen and (max-width: 768px) {
-        width: 100%;
+        width: auto;
     }
 }
 
@@ -63,6 +63,6 @@
     justify-self: end;
 
     @media screen and (max-width: 768px) {
-        width: 100%;
+        width: auto;
     }
 }

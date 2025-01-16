@@ -1,5 +1,17 @@
 [
     {
+        "id": 17,
+        "projectName": "Website Chatbot",
+        "for": "Work Project",
+        "summary": "A Software as a Service that allows you to integrate an AI powered chatbot into any website.",
+        "skills": ["JavaScript", "Node.js", "SQL", "AI"],
+        "date": "2024-07-26",
+        "image": "images/chatbot.png",
+        "github": "",
+        "live": "",
+        "page": "/pages/website-chatbot.html"
+    },
+    {
         "id": 0,
         "projectName": "Wrecking Wheels",
         "for": "Personal Project",
@@ -10,18 +22,6 @@
         "github": "https://github.com/BSchoolland/Vehicle-Building-Game",
         "live": "https://wreckingwheels.com/",
         "page": "/pages/wrecking-wheels.html"
-    },
-    {
-        "id": 1,
-        "projectName": "Visions to Visuals Portfolio",
-        "for": "Work Project",
-        "summary": "A portfolio site for my startup, Visions to Visuals, that showcases our work and services.",
-        "skills": ["Next.js", "React", "Apache"],
-        "date": "2024-05-30",
-        "image": "images/v2v.png",
-        "github": "https://github.com/Visions-to-Visuals/portfolio",
-        "live": "https://visionstovisuals.com/",
-        "page": "/pages/visions-to-visuals.html"
     },
     {
         "id": 2,
@@ -47,6 +47,18 @@
         "live": "https://pypi.org/project/gptautocli/",
         "skipLoading": true,
         "page": "/pages/ai-terminal.html"
+    },
+    {
+        "id": 1,
+        "projectName": "Visions to Visuals Portfolio",
+        "for": "Work Project",
+        "summary": "A portfolio site for my startup, Visions to Visuals, that showcases our work and services.",
+        "skills": ["Next.js", "React", "Apache"],
+        "date": "2024-05-30",
+        "image": "images/v2v.png",
+        "github": "https://github.com/Visions-to-Visuals/portfolio",
+        "live": "https://visionstovisuals.com/",
+        "page": "/pages/visions-to-visuals.html"
     },
     {
         "id": 14,

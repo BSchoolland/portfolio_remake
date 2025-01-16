@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: VisionstoVisuals Chatbot</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <style>
+        .custom-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+            border: 1px solid #333;
+        }
+        .custom-popup p {
+            margin-bottom: 25px;
+            font-size: 1.3em;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        .custom-popup button {
+            background: #2c2c2c;
+            color: white;
+            border: 1px solid #444;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1em;
+        }
+        .custom-popup button:hover {
+            background: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <button class="hamburger" aria-label="Open navigation menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>Project: Visions to Visuals Chatbot</h2>
+            <p>This project is a software as a service (SaaS) chatbot I'm building for my company, Visions to Visuals. It allows clients to add a chatbot to their website for less than $10 per month, in under 15 minutes.</p>
+            
+            <p>The big difference between this chatbot and others is that it is built using the latest AI models, so instead of having a pre-defined set of responses, it can answer any question using data it accesses directly from the client's website using a process known as RAG or Retrieval-Augmented Generation.</p>
+
+            <h3>Key features of the Visions to Visuals Chatbot:</h3>
+            <ul>
+                <li>Easy integration with any website using a single line of code</li>
+                <li>Automatic website content scanning and indexing, all the client needs to do is provide a URL and a the AI does the rest</li>
+                <li>Full customization of the chatbot's appearance and behavior</li>
+            </ul>
+
+            <h3>Specific Learnings</h3>
+
+            <p>I started this project right before I had a break between jobs, which is why I decided to take on something this ambitious.  This is my favorite kind of project, because I get to see all the things I've been learning, like AI, Project Management, and web scraping, come together to create something incredible, and totally beyond what I could've built a year ago.</p>
+
+            <p>The service is currently in beta testing, with plans for public release in the near future (hopefully in February of 2025).  I hope to see it reduce the workload of customer service teams and increase user engagement!</p>
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+            <a href="https://www.flaticon.com/free-icons/developer" style="color: white" title="developer icons">Icons created by Pixel perfect - Flaticon</a>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <div class="custom-popup" id="chatbotPopup" style="display: none;">
+        <p>You're on the chatbot page, why read about it when you could be chatting with it?</p>
+        <button onclick="closePopup()">Talk to Chatbot</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img); // Add the image to the DOM
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.live) {
+                            links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+
+                    // Hide the loading screen even if there was an error
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+
+        function showPopup() {
+            document.getElementById('chatbotPopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('chatbotPopup').style.display = 'none';
+            const chatbotComponent = document.getElementById('v2v-chatbot-component');
+            if (chatbotComponent && chatbotComponent.shadowRoot) {
+                const chatbotButton = chatbotComponent.shadowRoot.querySelector('.v2v-chatbot-button');
+                if (chatbotButton) {
+                    chatbotButton.click();
+                    // Wait for chatbot to open
+                    setTimeout(() => {
+                        const container = chatbotComponent.shadowRoot.querySelector('.v2v-chatbot-container');
+                        if (container) {
+                            const input = container.querySelector('.user-input');
+                            const form = container.querySelector('.v2v-chatbot-input');
+                            if (input && form) {
+                                // Set the value and dispatch events to simulate real typing
+                                input.value = "What is this chatbot project about?";
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                // click the submit button
+                                form.querySelector('.v2v-chatbot-submit').click();
+                            }
+                        }
+                    }, 1000); // Wait 1 second for chatbot to fully open
+                }
+            }
+        }
+
+        const checkForChatbot = setInterval(() => {
+            const chatbotComponent = document.getElementById('v2v-chatbot-component');
+            if (chatbotComponent && chatbotComponent.shadowRoot) {
+                const chatbotButton = chatbotComponent.shadowRoot.querySelector('.v2v-chatbot-button');
+                console.log('Looking for button in shadow root...');
+                if (chatbotButton) {
+                    console.log('Button found:', chatbotButton);
+                    try {
+                        setTimeout(showPopup, 2000);
+                    } catch (error) {
+                        console.error('Error showing popup:', error);
+                    }
+                    clearInterval(checkForChatbot);
+                }
+            }
+        }, 1000);
+    </script>
+    <script src="https://chatbot.visionstovisuals.com/chatbot/api/frontend/component.js" chatbot-id="41662da08f6decfe9b60fd4f8f086224"></script>
+</body>
+</html>
