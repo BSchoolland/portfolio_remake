@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const STAR_DENSITY = 5 * 10e7;
     const GRAVITATIONAL_CONSTANT = 6.6743e-11;
   
-    const STAR_COUNT = Math.floor(window.innerWidth / 30);
+    let STAR_COUNT = Math.floor(window.innerWidth / 30);
     const MAX_STAR_RADIUS = 10;
     const MIN_STAR_RADIUS = 1;
     const MAX_STAR_VELOCITY = 1.25;
@@ -21,14 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const COMET_SPEED = 2.5;
     const MAX_COMET_RADIUS = 4;
     const COMET_FRICTION = 0.995;
-    const TAIL_LENGTH_FACTOR = 5;
-    const TAIL_FALLOFF_SPEED = 0.3;
-    const maxTailLength = 50;
+    let TAIL_LENGTH_FACTOR = 5;
+    let TAIL_FALLOFF_SPEED = 0.3;
+    let maxTailLength = 50;
   
     let stars = [];
+    let bursts = [];
     let mouseX = 0;
     let mouseY = 0;
     let bigStar = null;
+    let ENABLE_BIG_STAR = false;
+    // Color controls
+    let colorBaseHue = 200; // base hue near deepskyblue
+    let colorHueVariance = 10; // small variance around base hue
+    let colorSaturation = 100; // percent
+    let colorLightness = 60; // percent
+    // Mode + effects
+    let crazyMode = false;
+    let shockwaveSizeMultiplier = 1;
     let top = 0;
   
     function random(min, max) {
@@ -75,6 +85,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       stars = stars.filter(star => star !== smallerStar);
+      // spawn a lightweight collision burst (expanding ring)
+      const combinedRadius = star1.radius + star2.radius;
+      const intensity = Math.min(2, combinedRadius / MAX_STAR_RADIUS);
+      bursts.push({
+        x: largerStar.x,
+        y: largerStar.y,
+        radius: 0,
+        maxRadius: (5 + combinedRadius * 1) * shockwaveSizeMultiplier,
+        alpha: 0.35 + Math.min(0.45, intensity * 0.35),
+        decay: 0.01 / (0.6 + intensity * 0.4),
+        lineWidth: 1 + intensity * 2,
+        isFront: star1.isFront || star2.isFront,
+      });
       addNewStar();
     }
   
@@ -119,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vy,
         tailLength: 0,
         isFront: random(0, 1) > 0.5,
+        color: randomStarColor(),
       });
     }
   
@@ -131,10 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
           vx: random(MIN_STAR_VELOCITY, MAX_STAR_VELOCITY),
           vy: random(MIN_STAR_VELOCITY, MAX_STAR_VELOCITY),
           isFront: random(0, 1) > 0.5,
+          color: randomStarColor(),
         });
       }
   
-      if (!('ontouchstart' in window)) {
+      if (!('ontouchstart' in window) && ENABLE_BIG_STAR) {
         stars.push({
           x: canvas1.width / 2,
           y: canvas1.height / 2,
@@ -144,10 +169,13 @@ document.addEventListener("DOMContentLoaded", () => {
           tailLength: 0,
           isFront: false,
           isBigStar: true,
+          color: randomStarColor(),
         });
       }
   
-      bigStar = stars[stars.length - 1];
+      if (ENABLE_BIG_STAR) {
+        bigStar = stars[stars.length - 1];
+      }
     }
   
     function drawStars() {
@@ -158,7 +186,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const ctx = star.isFront ? ctx2 : ctx1;
         ctx.beginPath();
         ctx.arc(star.x, star.y - top, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "deepskyblue"
+        ctx.fillStyle = star.color || "deepskyblue";
+        ctx.fill();
+        ctx.closePath();
+      });
+      // draw collision bursts as shockwaves (radial fade)
+      bursts.forEach(burst => {
+        const ctx = burst.isFront ? ctx2 : ctx1;
+        const inner = Math.max(0, burst.radius * 0.55);
+        const outer = Math.max(inner + 1, burst.radius);
+        const grad = ctx.createRadialGradient(burst.x, burst.y - top, inner, burst.x, burst.y - top, outer);
+        const baseAlpha = Math.max(0, Math.min(1, burst.alpha));
+        grad.addColorStop(0.0, `rgba(255,200,100,0)`);
+        grad.addColorStop(0.6, `rgba(255,200,120,${(baseAlpha * 0.25).toFixed(3)})`);
+        grad.addColorStop(0.9, `rgba(255,220,160,${(baseAlpha * 0.8).toFixed(3)})`);
+        grad.addColorStop(1.0, `rgba(255,200,100,0)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(burst.x, burst.y - top, outer, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
       });
@@ -166,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     function updateStars() {
       stars.forEach(star => {
-        if (star.isBigStar) {
+        if (star.isBigStar && ENABLE_BIG_STAR) {
           star.x = mouseX;
           star.y = mouseY;
         } else {
@@ -208,6 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
       stars.forEach(star => {
         star.merging = false;
         const speed = Math.sqrt(star.vx ** 2 + star.vy ** 2);
+        star.speed = speed;
   
         if (speed > COMET_SPEED - 0.25) {
           star.vx *= COMET_FRICTION;
@@ -227,9 +273,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const tailLength = star.tailLength;
           star.tailLength -= TAIL_FALLOFF_SPEED;
   
-          const speed = Math.sqrt(star.vx ** 2 + star.vy ** 2);
-          const normalizedVx = star.vx / speed;
-          const normalizedVy = star.vy / speed;
+          const tailSpeed = star.speed || Math.sqrt(star.vx ** 2 + star.vy ** 2);
+          const normalizedVx = star.vx / tailSpeed;
+          const normalizedVy = star.vy / tailSpeed;
   
           const limitedTailLength = Math.min(tailLength, maxTailLength);
           const ctx = star.isFront ? ctx2 : ctx1;
@@ -240,8 +286,9 @@ document.addEventListener("DOMContentLoaded", () => {
             star.y - top - limitedTailLength * normalizedVy
           );
   
-          gradient.addColorStop(0, "rgba(255, 165, 0, 1)");
-          gradient.addColorStop(0.5, "rgba(255, 69, 0, 0.8)");
+          gradient.addColorStop(0, "rgba(255, 255, 200, 1)");
+          gradient.addColorStop(0.3, "rgba(255, 165, 0, 0.9)");
+          gradient.addColorStop(0.7, "rgba(255, 69, 0, 0.4)");
           gradient.addColorStop(1, "rgba(255, 0, 0, 0)");
   
           ctx.beginPath();
@@ -252,8 +299,15 @@ document.addEventListener("DOMContentLoaded", () => {
           );
           ctx.strokeStyle = gradient;
           ctx.lineWidth = star.radius * 2;
+          ctx.lineCap = "round";
           ctx.stroke();
         }
+      });
+      // update bursts
+      bursts = bursts.filter(burst => {
+        burst.radius += Math.max(0.25, (burst.maxRadius - burst.radius) * 0.08);
+        burst.alpha -= burst.decay;
+        return burst.alpha > 0.02 && burst.radius < burst.maxRadius + 5;
       });
     }
   
@@ -276,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas1.style.top = `${top}px`;
       canvas2.style.top = `${top}px`;
       
-      if (top > 0 && bigStar) {
+      if (top > 0 && bigStar && ENABLE_BIG_STAR) {
         bigStar.isBigStar = false;
         const interval = setInterval(() => {
           if (bigStar && bigStar.radius > 10) {
@@ -291,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
       }
   
-      if (top === 0) { //&& !('ontouchstart' in window)) {
+      if (top === 0 && ENABLE_BIG_STAR) { //&& !('ontouchstart' in window)) {
         const star = {
           x: canvas1.width / 2,
           y: canvas1.height / 2,
@@ -301,12 +355,73 @@ document.addEventListener("DOMContentLoaded", () => {
           tailLength: 0,
           isFront: false,
           isBigStar: true,
+          color: randomStarColor(),
         };
   
         bigStar = star;
         stars.push(star);
       }
     }
+  
+    function randomStarColor() {
+      if (crazyMode) {
+        const hue = Math.floor(Math.random() * 360);
+        const sat = 80 + Math.floor(Math.random() * 20);
+        const light = 55 + Math.floor(Math.random() * 20);
+        return `hsl(${hue}, ${sat}%, ${light}%)`;
+      }
+      const hue = colorBaseHue + (Math.random() * 2 - 1) * colorHueVariance;
+      return `hsl(${hue.toFixed(1)}, ${colorSaturation}%, ${colorLightness}%)`;
+    }
+
+    // Expose simple controls for tweaking in console
+    window.cometControls = {
+      setColorBaseHue: (h) => { colorBaseHue = Number(h) || colorBaseHue; },
+      setColorHueVariance: (v) => { colorHueVariance = Number(v) || colorHueVariance; },
+      setColorSaturation: (s) => { colorSaturation = Number(s) || colorSaturation; },
+      setColorLightness: (l) => { colorLightness = Number(l) || colorLightness; },
+      setTailLengthFactor: (v) => { TAIL_LENGTH_FACTOR = Number(v) || TAIL_LENGTH_FACTOR; },
+      setTailFalloff: (v) => { TAIL_FALLOFF_SPEED = Number(v) || TAIL_FALLOFF_SPEED; },
+      setMaxTailLength: (v) => { maxTailLength = Number(v) || maxTailLength; },
+    };
+
+    // Toggle crazy mode from UI
+    window.setCrazyMode = function(enabled) {
+      crazyMode = !!enabled;
+      ENABLE_BIG_STAR = crazyMode;
+      shockwaveSizeMultiplier = crazyMode ? 2 : 1; // double shockwave size in crazy mode
+      // Increase star count by 50% to produce more comets
+      const baseCount = Math.floor(window.innerWidth / 30);
+      STAR_COUNT = Math.floor(baseCount * (crazyMode ? 1.5 : 1));
+      // Recolor immediately
+      stars.forEach(s => { s.color = randomStarColor(); });
+      // If increasing count, top up immediately
+      while (stars.length < STAR_COUNT) {
+        addNewStar();
+      }
+      // Manage big star
+      if (crazyMode) {
+        if (!bigStar) {
+          const star = {
+            x: canvas1.width / 2,
+            y: canvas1.height / 2,
+            radius: 15,
+            vx: 0,
+            vy: 0,
+            tailLength: 0,
+            isFront: false,
+            isBigStar: true,
+            color: randomStarColor(),
+          };
+          bigStar = star;
+          stars.push(star);
+        } else {
+          bigStar.isBigStar = true;
+        }
+      } else if (bigStar) {
+        bigStar.isBigStar = false;
+      }
+    };
   
     createStars();
     animate();

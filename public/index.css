@@ -1,52 +1,85 @@
 .hero h1 {
-    margin: 0;
-    line-height: 1.25;
-    background: linear-gradient(to right, #006e69, var(--accent-color)) no-repeat;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--accent-color), var(--action-color), var(--accent-color)) no-repeat;
     background-size: 200% 100%;
     background-position: 100% 0;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 900;
-    font-size: 5rem;
-    animation: gradient 3s ease-out forwards;
-    @media screen and (max-width: 1000px) {
-        font-size: 3rem;
-    }
+    font-weight: 700;
+    font-size: 4rem;
+    animation: gradient-slide 3s ease-out forwards;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
 
-    @media screen and (max-width: 768px) {
-        font-size: 2.3rem;
+@media screen and (max-width: 1000px) {
+    .hero h1 {
+        font-size: 3rem;
     }
 }
 
-@keyframes gradient {
+@media screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@keyframes gradient-slide {
     0% { background-position: -200% 0; }
     100% { background-position: 90% 0; }
 }
 
-.hero-inner div {
-    max-width: 30rem;
+@keyframes fadeInUp {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.hero-inner .hero-content {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    overflow: visible;
-    @media screen and (max-width: 768px) {
-        max-width: 100%;
-        padding-top: 0px;
-        padding-bottom: 20px;
-    }
-
-    
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
 }
 
 .hero img {
-    width: 20rem;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #333;
-    padding: 10px;
-    @media screen and (max-width: 768px) {
-        width: 15rem;
+    border: 4px solid rgba(0, 179, 155, 0.3);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeInScale 1s ease-out 0.6s forwards;
+}
+
+@media screen and (max-width: 768px) {
+    .hero img {
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+@keyframes fadeInScale {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
     }
 }
 
