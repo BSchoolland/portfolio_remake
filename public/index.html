@@ -42,6 +42,29 @@
             /* Position it lower down the page */
         }
 
+        /* Crazy Mode switch */
+        .toggle-container { display:flex; align-items:center; gap:8px; margin-left:12px; }
+        .switch-input { position:absolute; opacity:0; width:0; height:0; }
+        .switch { position:relative; display:inline-flex; align-items:center; cursor:pointer; user-select:none; }
+        .switch-track { width:54px; height:28px; background:#444; border-radius:28px; transition:background 0.2s ease; box-shadow: inset 0 0 4px rgba(0,0,0,0.3); }
+        .switch-thumb { position:absolute; left:2px; top:2px; width:24px; height:24px; background:#fff; border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.3); transition:transform 0.2s ease; }
+        .switch-label { margin-left:10px; font-size:14px; opacity:0.9; }
+        /* compact fire inside switch */
+        .switch-firebox { position:absolute; left:6px; top:-18px; width:40px; height:40px; filter: blur(6px) contrast(20); pointer-events:none; display:none; overflow:visible; }
+        .switch-input:checked + .switch .switch-firebox { display:block; }
+        .switch-burn { position:absolute; bottom:-8px; left:0; width:10px; height:10px; background:#000; border-radius:50%; animation-name: burning-mini; animation-timing-function: linear; animation-iteration-count: infinite; }
+        @keyframes burning-mini { 0% { transform: translateY(0); } 100% { transform: translateY(-60px); } }
+        .switch-input:checked + .switch .switch-track { background: linear-gradient(90deg, #ff6a00, #ff3d00); }
+        .switch-input:checked + .switch .switch-thumb { transform: translateX(26px); }
+        
+
+        /* Big fire animation (scoped) */
+        #ui { position: fixed; right: 16px; bottom: 16px; width: 500px; height: 500px; transform: scale(0.35, 0.9); transform-origin: bottom right; display: none; z-index: 2; }
+        body.crazy-on #ui { display: block; }
+        #ui .fire { position: relative; width: 500px; height: 500px; background: #ff9900; filter: blur(20px) contrast(30); border: 250px solid #000; border-bottom-color: transparent; border-radius: 40%; box-sizing: border-box; transform: scale(0.4, 1); }
+        #ui .burn { position: absolute; top: 500px; left: -50px; width: 100px; height: 100px; background: #000; border-radius: 100%; animation-name: burning; animation-timing-function: linear; animation-iteration-count: infinite; }
+        @keyframes burning { 0% { transform: translateY(0); } 100% { transform: translateY(-600px); } }
+
         canvas.front {
             element {
                 width: 100%;
@@ -58,6 +81,7 @@
 <body>
     <canvas id="canvas1"></canvas>
     <canvas id="canvas2" class="front"></canvas>
+    
     <script src="comet.js"></script>
     <section class="header">
         <div class="header-inner">
@@ -71,14 +95,14 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="header-contact">
-                <a href="/resume.pdf" target="_blank">Resume</a>
-                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
-            </div>
-            <div class="toggle-container" style="display:flex;align-items:center;gap:8px;margin-left:12px;">
-                <label for="crazy-toggle" style="cursor:pointer;user-select:none;">Crazy Mode</label>
-                <input id="crazy-toggle" type="checkbox" aria-label="Toggle crazy mode" />
+            <div class="toggle-container">
+                <input id="crazy-toggle" class="switch-input" type="checkbox" aria-label="Toggle crazy mode" />
+                <label for="crazy-toggle" class="switch">
+                    <span class="switch-track"></span>
+                    <span class="switch-thumb"></span>
+                    <span class="switch-firebox" id="switch-firebox"></span>
+                    <span class="switch-label">Crazy Mode</span>
+                </label>
             </div>
         </div>
     </section>
@@ -87,7 +111,7 @@
         <div class="hero-inner">
             <!-- <img src="images/ben.png" alt="Photo of Benjamin Schoolland"> -->
             <div class="hero-content">
-                <h1>Benjamin Schoolland</h1>
+                <h1 id="site-name">Benjamin Schoolland</h1>
                 <p class="subtitle">Full Stack Developer & Digital Craftsman</p>
                 <p class="description">I create exceptional digital experiences through clean code, innovative solutions, and a passion for cutting-edge technologies. From React frontends to scalable backends, I bring ideas to life.</p>
                 
@@ -264,10 +288,36 @@
             if (!window.setCrazyMode) {
                 window.setCrazyMode = function(_){};
             }
+            var burnCount = 14;
+            function ensureSwitchFireBuilt() {
+                var box = document.getElementById('switch-firebox');
+                if (!box) return;
+                if (box.childElementCount >= burnCount) return;
+                for (var i = 0; i < burnCount; i++) {
+                    var burn = document.createElement('div');
+                    burn.className = 'switch-burn';
+                    var h = (Math.random()*8)+4; // 4-12px
+                    var l = Math.floor(Math.random()*28) - 4; // -4 to 24 px
+                    var dur = Math.floor(Math.random()*900) + 500; // 500-1400ms
+                    burn.style.width = '10px';
+                    burn.style.height = h + 'px';
+                    burn.style.left = l + 'px';
+                    burn.style.background = 'radial-gradient(circle at 50% 60%, #ffd54a 30%, #ff6a00 60%, rgba(255,106,0,0) 70%)';
+                    burn.style.animationDuration = dur + 'ms';
+                    burn.style.animationDelay = (-Math.floor(Math.random()*1200)) + 'ms';
+                    box.appendChild(burn);
+                }
+            }
+            function setFireEnabled(enabled){
+                if (enabled) ensureSwitchFireBuilt();
+            }
             if (el) {
                 el.addEventListener('change', function(e){
                     window.setCrazyMode(!!e.target.checked);
+                    setFireEnabled(!!e.target.checked);
                 });
+                // initialize state on load
+                if (el.checked) { setFireEnabled(true); }
             }
         })();
     </script>

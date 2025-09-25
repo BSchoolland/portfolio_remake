@@ -1,15 +1,10 @@
 .hero h1 {
     margin: 0 0 24px 0;
     line-height: 1.1;
-    background: linear-gradient(135deg, var(--accent-color), var(--action-color), var(--accent-color)) no-repeat;
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #7dc3ff;
+    text-shadow: 0 0 12px rgba(125, 195, 255, 0.6);
     font-weight: 700;
     font-size: 4rem;
-    animation: gradient-slide 3s ease-out forwards;
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
@@ -36,12 +31,27 @@
 @keyframes fadeInUp {
     0% { 
         opacity: 0; 
-        transform: translateY(30px); 
+        transform: translateY(0px); 
     }
     100% { 
         opacity: 1; 
-        transform: translateY(0); 
+        transform: translateY(-30); 
     }
+}
+
+/* Barrel roll animation applied when crazy mode is on */
+@keyframes barrel-roll {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+.do-roll {
+    animation: barrel-roll 0.8s ease-in-out !important;
+    opacity: 1 !important;
 }
 
 .hero-inner .hero-content {

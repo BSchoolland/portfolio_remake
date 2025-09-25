@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let crazyMode = false;
     let shockwaveSizeMultiplier = 1;
     let top = 0;
+    const MAX_BURSTS = 24;
   
     function random(min, max) {
       return Math.random() * (max - min) + min;
@@ -85,19 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       stars = stars.filter(star => star !== smallerStar);
-      // spawn a lightweight collision burst (expanding ring)
+      // spawn some orange circles (simple sparks)
       const combinedRadius = star1.radius + star2.radius;
-      const intensity = Math.min(2, combinedRadius / MAX_STAR_RADIUS);
-      bursts.push({
-        x: largerStar.x,
-        y: largerStar.y,
-        radius: 0,
-        maxRadius: (5 + combinedRadius * 1) * shockwaveSizeMultiplier,
-        alpha: 0.35 + Math.min(0.45, intensity * 0.35),
-        decay: 0.01 / (0.6 + intensity * 0.4),
-        lineWidth: 1 + intensity * 2,
-        isFront: star1.isFront || star2.isFront,
-      });
+      spawnBursts(largerStar.x, largerStar.y, combinedRadius);
       addNewStar();
     }
   
@@ -190,22 +181,13 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fill();
         ctx.closePath();
       });
-      // draw collision bursts as shockwaves (radial fade)
-      bursts.forEach(burst => {
-        const ctx = burst.isFront ? ctx2 : ctx1;
-        const inner = Math.max(0, burst.radius * 0.55);
-        const outer = Math.max(inner + 1, burst.radius);
-        const grad = ctx.createRadialGradient(burst.x, burst.y - top, inner, burst.x, burst.y - top, outer);
-        const baseAlpha = Math.max(0, Math.min(1, burst.alpha));
-        grad.addColorStop(0.0, `rgba(255,200,100,0)`);
-        grad.addColorStop(0.6, `rgba(255,200,120,${(baseAlpha * 0.25).toFixed(3)})`);
-        grad.addColorStop(0.9, `rgba(255,220,160,${(baseAlpha * 0.8).toFixed(3)})`);
-        grad.addColorStop(1.0, `rgba(255,200,100,0)`);
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(burst.x, burst.y - top, outer, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
+      // draw simple orange spark circles
+      bursts.forEach(b => {
+        if (b.alpha <= 0) return;
+        ctx1.beginPath();
+        ctx1.arc(b.x, b.y - top, b.radius, 0, Math.PI * 2);
+        ctx1.fillStyle = `rgba(255, 140, 0, ${b.alpha})`;
+        ctx1.fill();
       });
     }
   
@@ -303,12 +285,14 @@ document.addEventListener("DOMContentLoaded", () => {
           ctx.stroke();
         }
       });
-      // update bursts
-      bursts = bursts.filter(burst => {
-        burst.radius += Math.max(0.25, (burst.maxRadius - burst.radius) * 0.08);
-        burst.alpha -= burst.decay;
-        return burst.alpha > 0.02 && burst.radius < burst.maxRadius + 5;
-      });
+      // update bursts (fade out quickly)
+      for (let i = bursts.length - 1; i >= 0; i--) {
+        const b = bursts[i];
+        b.alpha -= 0.03;
+        if (b.alpha <= 0) {
+          bursts.splice(i, 1);
+        }
+      }
     }
   
     function animate() {
@@ -374,6 +358,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return `hsl(${hue.toFixed(1)}, ${colorSaturation}%, ${colorLightness}%)`;
     }
 
+    // spawn some orange circles around a point, sized by input
+    function spawnBursts(x, y, size) {
+      const count = 3 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < count; i++) {
+        bursts.push({
+          x: x + (Math.random() - 0.5) * size * 1.5,
+          y: y + (Math.random() - 0.5) * size * 1.5,
+          radius: Math.random() * (5 + size * 0.5),
+          alpha: 0.7,
+        });
+      }
+      if (bursts.length > MAX_BURSTS) {
+        bursts.splice(0, bursts.length - MAX_BURSTS);
+      }
+    }
+
     // Expose simple controls for tweaking in console
     window.cometControls = {
       setColorBaseHue: (h) => { colorBaseHue = Number(h) || colorBaseHue; },
@@ -421,6 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (bigStar) {
         bigStar.isBigStar = false;
       }
+      // No UI-specific side effects here; handled in index.js
     };
   
     createStars();
@@ -432,5 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
+    // UI init handled separately to keep this file focused on canvas effects
   });
   
