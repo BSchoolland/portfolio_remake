@@ -139,14 +139,23 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <h3>${project.projectName}</h3>
                         ${skillsHtml}
                         <p>${project.summary}</p>
-                        <div style="display: flex; justify-content: center;">
-                            <img src="${project.image}" style="max-width: 75%; max-height: 300px; cursor: pointer" alt="${project.projectName}" alt="${project.projectName}" onClick="window.location.href='${project.page}'" />
-                        </div>
-                        <br />
-                        <div>
-                        ${linksHtml}
+                        <img src="${project.image}" alt="${project.projectName}" />
+                        <div class="links">
+                            ${linksHtml}
                         </div>
                     `;
+                    
+                    // Make the entire card clickable to go to the page (if it exists)
+                    if (project.page) {
+                        projectDiv.style.cursor = 'pointer';
+                        projectDiv.addEventListener('click', function(e) {
+                            // Only navigate if the click wasn't on a link/button
+                            if (!e.target.closest('a')) {
+                                window.location.href = project.page;
+                            }
+                        });
+                    }
+                    
                     container.appendChild(projectDiv);
                 });
             }

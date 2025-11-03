@@ -29,12 +29,24 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <h3>${project.projectName}</h3>
                         ${skillsHtml}
                         <p>${project.summary}</p>
-                        <div style="display: flex; justify-content: center; cursor: pointer;">
-                            <img src="${project.image}" alt="${project.projectName}" onClick="window.location.href='${project.page}'" />
+                        <div style="display: flex; justify-content: center;">
+                            <img src="${project.image}" alt="${project.projectName}" />
                         </div>
                         <br />
                         ${linksHtml}
                     `;
+                
+                // Make the entire card clickable to go to the page (if it exists)
+                if (project.page) {
+                    projectDiv.style.cursor = 'pointer';
+                    projectDiv.addEventListener('click', function(e) {
+                        // Only navigate if the click wasn't on a link/button
+                        if (!e.target.closest('a')) {
+                            window.location.href = project.page;
+                        }
+                    });
+                }
+                
                 projectList.appendChild(projectDiv);
             });
 
@@ -100,35 +112,3 @@ showPhone.addEventListener('click', function() {
     showPhone.innerHTML += ' 573-'
     showPhone.innerHTML += '0059'
 });
-
-// Crazy mode UI behavior (barrel roll + persistence)
-(function(){
-    var rollTimerId = null;
-    function clearRollTimer(){ if (rollTimerId) { try { clearTimeout(rollTimerId); } catch(_){} rollTimerId = null; } }
-    function scheduleRollLoop(){
-        clearRollTimer();
-        var el = document.getElementById('site-name');
-        if (!el) return;
-        var tick = function(){
-            el.classList.remove('do-roll');
-            void el.offsetWidth;
-            el.classList.add('do-roll');
-            var next = 1000 + Math.floor(Math.random()*2000);
-            rollTimerId = setTimeout(tick, next);
-        };
-        rollTimerId = setTimeout(tick, 1200);
-    }
-    function handleMode(on){
-        if (on) scheduleRollLoop(); else clearRollTimer();
-    }
-    document.addEventListener('DOMContentLoaded', function(){
-        var toggle = document.getElementById('crazy-toggle');
-        // initial from storage
-        var saved = null; try { saved = localStorage.getItem('crazyMode'); } catch(_){}
-        var on = saved === 'on' || (toggle && toggle.checked);
-        handleMode(on);
-        if (toggle) {
-            toggle.addEventListener('change', function(e){ handleMode(!!e.target.checked); });
-        }
-    });
-})();
