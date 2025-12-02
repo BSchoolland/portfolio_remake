@@ -322,7 +322,7 @@ nav ul li a u {
 }
 
 .about {
-    padding: 120px 20px;
+    padding: 80px 20px;
     background: radial-gradient(circle at top left, rgba(0, 179, 155, 0.25), transparent 55%), rgba(3, 0, 10, 0.9);
     position: relative;
     color: var(--text-color);
@@ -509,13 +509,13 @@ nav ul li a u {
 }
 
 .skills {
-    padding: 120px 20px;
+    padding: 80px 20px;
     position: relative;
     color: var(--text-color);
 }
 
 .other-projects, .contact {
-    padding: 120px 20px;
+    padding: 80px 20px;
     color: var(--text-color);
     position: relative;
 }
@@ -551,8 +551,8 @@ nav ul li a u {
 }
 
 .projects {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .projects h1 {
@@ -634,7 +634,7 @@ nav ul li a u {
 
 .project img:not(.project-skill-image) {
     width: 100%;
-    max-height: 220px;
+    max-height: 360px;
     object-fit: cover;
     border-radius: 14px;
     border: 1px solid rgba(125, 195, 255, 0.16);
@@ -807,10 +807,12 @@ h3 {
 .skills ul {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 12px;
     justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .skills li {
