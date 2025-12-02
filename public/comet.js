@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const STAR_DENSITY = 5 * 10e7;
     const GRAVITATIONAL_CONSTANT = 6.6743e-11;
+    const GRAVITY_RADIUS_CUTOFF = 5; // Only stars with radius >= this generate gravity
   
     const STAR_COUNT = Math.floor(window.innerWidth / 30);
     const MAX_STAR_RADIUS = 10;
@@ -171,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       if (physicsFrameCounter === 0) {
         stars.forEach(star => {
-          if (star.isBigStar) {
+            if (star.isBigStar) {
             star.x = mouseX;
             star.y = mouseY;
           } else {
@@ -185,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
             const m1 = (4 / 3) * Math.PI * Math.pow(star.radius, 3) * STAR_DENSITY;
             stars.forEach(otherStar => {
-              if (star !== otherStar) {
+              if (star !== otherStar && otherStar.radius >= GRAVITY_RADIUS_CUTOFF) {
                 const r = distanceBetweenStars(star, otherStar);
                 const m2 = (4 / 3) * Math.PI * Math.pow(otherStar.radius, 3) * STAR_DENSITY;
                 const F = (GRAVITATIONAL_CONSTANT * (m1 * m2)) / r ** 2;

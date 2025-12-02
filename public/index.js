@@ -76,6 +76,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             frequentSkills.forEach((skill) => {
                 const skillElement = document.createElement("li");
                 skillElement.innerHTML = `<a href="/all-projects?filter=${skill}">${skill}</a>`;
+                skillElement.style.cursor = 'pointer';
+                skillElement.addEventListener('click', function() {
+                    window.location.href = `/all-projects?filter=${skill}`;
+                });
                 skillsContainer.appendChild(skillElement);
             }
             );

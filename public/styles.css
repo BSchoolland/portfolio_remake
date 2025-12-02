@@ -824,6 +824,15 @@ h3 {
     font-size: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(9, 13, 38, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills li a {
+    pointer-events: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 .skills li:hover {
