@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Blade</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <button class="hamburger" aria-label="Open navigation menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <h2>Blade</h2>
+            <p>I've always loved making games, and after Wrecking Wheels and Sketchy Towers I wanted to try something more polished. Blade is a top-down action game where you fight through waves of enemies and boss battles using sword combat, dashing, and upgrades. The whole thing runs in the browser, and I'd say it's my most fun game by far — the combat feels really dynamic.</p>
+
+            <p>I built it in TypeScript using PixiJS for rendering and Matter.js for physics. While Wrecking Wheels is still the bigger project, Blade is a lot more polished — and I think it really shows how much I've grown as a developer since then. I also leaned heavily on AI development tools this time around, which let me move way faster than I could have with Wrecking Wheels.</p>
+
+            <p>Each of the 4 bosses has its own AI and attack patterns, and there are over 10 different enemy types across 14+ hand-designed waves. It also works with keyboard/mouse, gamepad controllers, and mobile touch controls — getting the auto-aim system to feel good on mobile took a lot of iteration.</p>
+
+            <h3>Key Learnings:</h3>
+            <ul>
+                <li><b>TypeScript for games:</b> This was my first big TypeScript project, and going back to plain JavaScript afterwards felt painful. Type safety caught so many bugs during development.</li>
+                <li><b>AI-assisted development:</b> Using AI tools throughout the process made a huge difference in how fast I could ship. It's a very different workflow compared to how I built Wrecking Wheels.</li>
+                <li><b>Cross-platform input:</b> Supporting keyboard, gamepad, and touch all at once is surprisingly tricky. Each has its own quirks.</li>
+            </ul>
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+            <a href="https://www.flaticon.com/free-icons/developer" style="color: white" title="developer icons">Icons created by Pixel perfect - Flaticon</a>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+                    img.src = `../${project.image}`;
+                    img.alt = `${project.projectName}`;
+                    img.style = "max-width: 100%; max-height: 800px";
+
+                    // Wait for the image to load
+                    img.onload = function() {
+                        intro.innerHTML = `
+                            <h1>${project.projectName}</h1>
+                            <p>${project.summary}</p>
+                            <div style="display: flex; justify-content: center;">
+                        `;
+                        intro.appendChild(img);
+
+                        if (project.github) {
+                            links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                        }
+                        if (project.live) {
+                            links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                        }
+
+                        // Hide the loading screen
+                        document.getElementById('loading-screen').style.display = 'none';
+                    }
+                }).catch((error) => {
+                    console.error('Error:', error);
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+    <script src="https://chatbot.visionstovisuals.com/chatbot/api/frontend/component.js" chatbot-id="41662da08f6decfe9b60fd4f8f086224"></script>
+</body>
+</html>

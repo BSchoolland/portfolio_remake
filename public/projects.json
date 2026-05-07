@@ -1,5 +1,29 @@
 [
     {
+        "id": 19,
+        "projectName": "Blade",
+        "for": "Personal Project",
+        "summary": "A fast-paced top-down action combat game with sword fighting, boss battles, and an upgrade system — playable in the browser.",
+        "skills": ["TypeScript", "Game Development", "WebGL", "HTML", "CSS"],
+        "date": "2025-05-05",
+        "image": "images/blade.png",
+        "github": "https://github.com/BSchoolland/swordfighting-game",
+        "live": "https://blade.wreckingwheels.com/",
+        "page": "/pages/blade.html"
+    },
+    {
+        "id": 18,
+        "projectName": "Excalibur",
+        "for": "Personal Project",
+        "summary": "A voice-activated AI desktop agent that can see your screen, browse the web, and complete tasks hands-free.",
+        "skills": ["Python", "AI", "MCP", "Speech Recognition", "Computer Vision", "Linux"],
+        "date": "2025-07-01",
+        "image": "images/excalibur.png",
+        "github": "https://github.com/BSchoolland/excalibur-v2",
+        "live": "",
+        "page": "/pages/excalibur.html"
+    },
+    {
         "id": 17,
         "projectName": "Website Chatbot",
         "for": "Work Project",

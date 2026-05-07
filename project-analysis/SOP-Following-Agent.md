@@ -1,0 +1,7 @@
+- **Project Name:** SOP-Following Agent
+- **What it does:** A ChatGPT-like web interface where an AI agent follows Standard Operating Procedures step-by-step, gathering structured information from users via forms and executing tools as guided by the SOP. It features editable SOPs, conversation branching (like ChatGPT's edit/branch UI), document generation and export (DOCX), and a full CRUD system for managing procedures, all backed by SQLite.
+- **Coolness factor:** 8/10 -- This is a sophisticated full-stack AI application with a well-architected conversation branching system (tree-based message threading), OpenAI function calling/tool use, real-time SOP editing, document export, Docker deployment, and structured output via Zod/Instructor. It goes well beyond a basic chatbot.
+- **Skills/technologies used:** Next.js, React, TypeScript, Tailwind CSS, SQLite, OpenAI API, Docker, Node.js, Zod, AI (function calling / tool use / structured output), HTML, CSS, JavaScript
+- **NEW skills not already in the portfolio:** TypeScript, Tailwind CSS, Docker, SQLite, Zod
+- **Portfolio recommendation:** Definitely Add
+- **Why:** This project demonstrates advanced AI engineering (function calling, structured outputs, SOP-driven agents) combined with strong full-stack skills (Next.js, TypeScript, Docker, conversation branching architecture). It showcases several technologies not yet in the portfolio and represents a high level of software engineering sophistication.

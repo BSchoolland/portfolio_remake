@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Excalibur</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="icon" href="../images/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="header-inner">
+            <button class="hamburger" aria-label="Open navigation menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/all-projects">All Projects</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#skills">Skills</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/benjamin-schoolland-907455254/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/BSchoolland" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section class="intro">
+        <div class="intro-inner">
+            <!-- to be populated by JavaScript -->
+        </div>
+    </section>
+    <section class="content">
+        <div class="content-inner">
+            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7348017971937583106" width="504" height="500" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+                <h2>Excalibur</h2>
+                <p>I built Excalibur during my internship at Digital NEST, where Huddle AI gave us access to their APIs. The idea was simple — I wanted an AI assistant that could actually see and interact with my desktop, not just chat in a text box.</p>
+
+                <p>Excalibur listens for a wake word or button press, transcribes what I say using Vosk, and then a GPT-4.1 agent figures out how to get it done. It can take screenshots and read the screen using Huddle's Vision API and H-OCR, browse the web with Playwright, open projects, manage files — basically anything I'd normally do by hand. It runs as a systemd service so it's always listening in the background.</p>
+
+                <p>It was featured in a demo day presentation, which you can see in the LinkedIn post above.</p>
+            </div>
+        </div>
+    </section>
+    <section class="links">
+        <div class="links-inner">
+            <!-- for project specific links (populated by JavaScript) -->
+        </div>
+    </section>
+    <br />
+    <br />
+    <section class="footer">
+        <div class="footer-inner">
+            <p>Benjamin Schoolland</p>
+            <a href="https://www.flaticon.com/free-icons/developer" style="color: white" title="developer icons">Icons created by Pixel perfect - Flaticon</a>
+        </div>
+    </section>
+    <div id="loading-screen" style="position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,1); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+        <p>Loading...</p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            fetch("../projects.json")
+                .then((response) => response.json())
+                .then((projects) => {
+                    const projectUrl = window.location.href;
+                    const projectPath = projectUrl.split('/').pop();
+                    const project = projects.find(project => project.page.includes(projectPath));
+                    const intro = document.querySelector('.intro-inner');
+                    const links = document.querySelector('.links-inner');
+
+                    // Create a new image object
+                    const img = new Image();
+
+                    intro.innerHTML = `
+                        <h1>${project.projectName}</h1>
+                        <p>${project.summary}</p>
+                        <div style="display: flex; justify-content: center;">
+                    `;
+
+                    if (project.github) {
+                        links.innerHTML += `<a href="${project.github}" target="_blank">GitHub</a>`;
+                    }
+                    if (project.live) {
+                        links.innerHTML += `<a href="loading.html?projectUrl=${project.live}" target="_blank">Live Site</a>`;
+                    }
+
+                    // Hide the loading screen
+                    document.getElementById('loading-screen').style.display = 'none';
+
+                }).catch((error) => {
+                    console.error('Error:', error);
+                    document.getElementById('loading-screen').style.display = 'none';
+                });
+        });
+    </script>
+    <script src="https://chatbot.visionstovisuals.com/chatbot/api/frontend/component.js" chatbot-id="41662da08f6decfe9b60fd4f8f086224"></script>
+</body>
+</html>

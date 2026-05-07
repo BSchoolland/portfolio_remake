@@ -1,0 +1,7 @@
+- **Project Name:** Blade
+- **What it does:** A fast-paced top-down action combat game built entirely in the browser where players fight through waves of 8+ unique enemy types and 4 boss battles using sword combat, dashing, and an upgrade system. It features full keyboard/mouse, gamepad controller, and mobile touch controls with auto-aim, sound design, particle effects, a fixed-timestep physics loop, and responsive scaling with letterboxing.
+- **Coolness factor:** 9/10 -- This is a substantial, polished game with nearly 12,000 lines of TypeScript, a deep wave system with 14+ hand-designed waves, multiple boss fights with distinct AI behaviors, an upgrade/leveling system, and cross-platform input support including mobile. The scope and completeness of the project is genuinely impressive.
+- **Skills/technologies used:** TypeScript, PixiJS (2D WebGL rendering), Matter.js (physics), Howler.js/Tone.js (audio/sound), Vite (build tooling), HTML5 Canvas/WebGL, game design, OOP architecture, mobile-responsive design, gamepad API
+- **NEW skills not already in the portfolio:** TypeScript, PixiJS, Game Development, Matter.js (physics engine), WebGL
+- **Portfolio recommendation:** Definitely Add
+- **Why:** A fully playable browser game of this scope powerfully demonstrates advanced programming ability, game architecture skills, and the ability to ship a complex, polished product -- it stands out from typical web portfolio projects and showcases TypeScript and game development as strong new skill areas.

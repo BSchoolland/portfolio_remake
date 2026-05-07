@@ -1,0 +1,26 @@
+- **Project Name:** SCCMOD Exhibit
+- **What it does:** An interactive museum/exhibit installation that accepts hand-drawn illustrations of animals on paper via a physical scanner, uses Facebook's AnimatedDrawings AI model (served via TorchServe/Docker) to automatically animate them, and displays the resulting animated GIFs walking or flying across a large screen with editable backdrops. It includes an admin dashboard, a job queue system, automatic drawing lifecycle management, and OpenAI integration for animal type classification.
+- **Coolness factor:** 8/10 -- This is a full physical-digital interactive exhibit that bridges hardware (scanner, dedicated PC build) with AI-powered animation and a polished live display. The real-world deployment aspect, Docker-based ML serving, and the end-to-end pipeline from paper drawing to animated screen display make it genuinely impressive and unique.
+- **Skills/technologies used:**
+  - HTML
+  - CSS
+  - JavaScript
+  - Node.js
+  - Express.js
+  - SQL (SQLite)
+  - Python
+  - Docker
+  - AI (Facebook AnimatedDrawings, OpenAI API, TorchServe)
+  - Bash (shell scripts for startup/shutdown/reboot)
+  - OpenCV (image processing)
+  - REST API design
+  - File system watchers (chokidar)
+  - PyAutoGUI (desktop automation)
+  - Multer (file upload handling)
+  - Conda (environment management)
+  - JWT (authentication)
+- **NEW skills not already in the portfolio:**
+  - Docker
+  - OpenCV
+- **Portfolio recommendation:** Definitely Add
+- **Why:** This is a standout project that demonstrates full-stack development combined with AI/ML integration, hardware interaction, and real-world deployment as a physical exhibit installation -- a rare and compelling combination that goes well beyond typical web projects.

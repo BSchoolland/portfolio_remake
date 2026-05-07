@@ -1,0 +1,7 @@
+- **Project Name:** Excalibur v2
+- **What it does:** A voice-controlled AI desktop agent that listens for spoken commands (via wake word or push-to-talk with F13), transcribes speech using Vosk, and delegates tasks to a GPT-4.1-powered AI agent. The agent can take screenshots, perform OCR, analyze the screen, open projects, browse the web via Playwright, and display results to the user -- all running as a systemd service on Linux.
+- **Coolness factor:** 9/10 -- This is a fully functional voice-activated AI assistant that can see and interact with your desktop. It combines speech recognition, computer vision, OCR, LLM-based reasoning, and browser automation into a seamless hands-free workflow. The systemd service integration makes it always-on, like a personal Jarvis.
+- **Skills/technologies used:** Python, AI (GPT-4.1 via agent-core), Speech Recognition (Vosk), MCP (Model Context Protocol), Playwright (browser automation), OCR (HOCR API), Computer Vision (Huddle Vision API), Linux (systemd services, PulseAudio, X11/Wayland), Bash, asyncio, REST APIs, Pillow, NumPy
+- **NEW skills not already in the portfolio:** Speech Recognition, MCP (Model Context Protocol), Playwright, OCR, Computer Vision API integration
+- **Portfolio recommendation:** Definitely Add
+- **Why:** This is one of the most impressive personal projects possible -- a voice-controlled AI agent that can see and interact with your desktop. It demonstrates advanced systems integration, AI/ML pipeline work, and Linux systems programming, all tied together in a practical daily-use tool.

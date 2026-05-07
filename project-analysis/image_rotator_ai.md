@@ -1,0 +1,7 @@
+- **Project Name:** Pottery Image Rotator AI
+- **What it does:** Uses a custom-trained Convolutional Neural Network (CNN) to detect the orientation of pottery images and automatically rotate them to be right-side-up. The project includes a full ML pipeline: data collection, augmentation of a small ~100 image dataset, GPU-accelerated model training via Docker, and an inference script that batch-processes images.
+- **Coolness factor:** 7/10 -- Training a CNN from scratch with limited data and building a complete ML pipeline (data augmentation, GPU-accelerated training in Docker, inference) is a solid and impressive project. It demonstrates real ML engineering skills beyond just calling an API.
+- **Skills/technologies used:** Python, TensorFlow/Keras, Machine Learning (CNN), Docker, Docker Compose, GPU Computing (NVIDIA), Jupyter Lab, NumPy, Matplotlib, Pillow (PIL), Data Augmentation, Image Processing
+- **NEW skills not already in the portfolio:** TensorFlow/Keras, Machine Learning, Docker, GPU Computing, Jupyter, NumPy, Image Processing
+- **Portfolio recommendation:** Definitely Add
+- **Why:** This project demonstrates genuine machine learning engineering -- training a CNN from scratch with data augmentation and GPU acceleration -- which is far more impressive than simply using pre-built AI APIs, and it adds Docker and TensorFlow/ML as notable new portfolio skills.
