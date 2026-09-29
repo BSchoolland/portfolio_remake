@@ -69,7 +69,7 @@
         "date": "2023-10-13",
         "image": "images/communityali.png",
         "github": "https://github.com/Community-ALI/CommunityALI-Website",
-        "live": "https://www.communityali.org/",
+        "live": "https://communityali.bschoolland.dev/",
         "page": "/pages/communityali.html"
     },
 
@@ -106,7 +106,7 @@
         "date": "2024-03-28",
         "image": "images/portfolio.png",
         "github": "https://github.com/BSchoolland/portfolio",
-        "live": "https://benjamin-protfolio-old-30a21b092b90.herokuapp.com/",
+        "live": "https://old-portfolio.bschoolland.dev/",
         "page": "/pages/portfolio-old.html"
     },
     {
@@ -142,7 +142,7 @@
         "date": "2024-01-20",
         "image": "images/mjcapplication.png",
         "github": "https://github.com/Community-ALI/club-website",
-        "live": "https://club-application-c15c28325e63.herokuapp.com/",
+        "live": "https://club.bschoolland.dev/",
         "page": "/pages/mjc-application.html"
     },
     {

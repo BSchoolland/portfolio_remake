@@ -20,7 +20,6 @@ app.get('/all-projects', (req, res) => {
 const hostname = '0.0.0.0'; 
 const port = process.env.PORT || 3000; // Use environment variable for port or default to 3000
 
-// Function to ping Heroku app
 function pingApp(url, message, start, end) {
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
@@ -34,11 +33,6 @@ function pingApp(url, message, start, end) {
     });
   }
 }
-
-// Initial pings
-pingApp('https://www.communityali.org', "Pinging Heroku App to keep awake...", 8, 23);
-// Schedule to ping communityali.org every 5 minutes
-setInterval(() => pingApp('https://www.communityali.org', "Pinging Heroku App to keep awake...", 8, 23), 5 * 60 * 1000);
 
 pingApp('https://beanythingmuseum.org/', "Pinging BAM to update events cache...", 1, 23);
 // ping BAM every 61 minutes
